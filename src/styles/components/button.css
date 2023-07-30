@@ -1,0 +1,19 @@
+.auth-button {
+    margin-top: 16px;
+    font-weight: 500;
+    font-size: 14px;
+    color: #fff;
+    padding: 20px 0;
+    border-radius: 10px;
+    border: none;
+    background-color: #3F51B5;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    letter-spacing: 0.0125em;
+}
+
+.notFound {
+    width: 215px;
+    margin: 16px auto 0;
+}

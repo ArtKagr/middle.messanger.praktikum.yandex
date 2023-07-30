@@ -1,0 +1,51 @@
+.user {
+
+    &-avatar {
+        width: 44px;
+        height: 44px;
+        border-radius: 100px;
+        background-color: rgba(196, 196, 196, 0.5);
+        margin-right: 8px;
+    }
+
+    &-title {
+        color: #212121;
+        letter-spacing: 0.0015em;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+    }
+
+    &-message {
+        color: #757575;
+        font-size: 14px;
+        letter-spacing: 0.0025em;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+    }
+
+    &-time {
+        font-size: 10px;
+        font-weight: 500;
+        color: #757575;
+    }
+
+    &-new_message {
+        width: 6px;
+        height: 16px;
+        border-radius: 100px;
+        background-color: #00BCD4;
+        font-size: 10px;
+        font-weight: 500;
+        color: #fff;
+        line-height: 1.5;
+        padding: 2px 7px;
+        margin: 4px 0 0 6px;
+
+    }
+
+    &-settings {
+        cursor: pointer;
+    }
+}
