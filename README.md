@@ -1,7 +1,7 @@
 <p align="center">
     <img src="https://img.shields.io/badge/express-4.18.1-green" />
     <img src="https://img.shields.io/badge/node-16.0.0-blue" />
-    <img src="https://img.shields.io/badge/vite-4.4.5-blue" />
+    <img src="https://img.shields.io/badge/vite-4.4.5-ff96b4" />
 </p>
 
 # Чат
