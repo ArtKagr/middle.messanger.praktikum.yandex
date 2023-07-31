@@ -7,7 +7,12 @@
     <title>Practicum Messenger</title>
   </head>
   <body>
-        Hello {{ username }}
-  {{> button label="Жми" }}
+    <div class="layout -flex">
+        {{>default}}
+        {{>registration}}
+    </div>
+    <div class="layout">
+        {{>chats}}
+    </div>
   </body>
 </html>
