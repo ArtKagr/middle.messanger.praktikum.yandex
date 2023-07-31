@@ -2,6 +2,6 @@
     <h1 class="title-auth">Авторизация</h1>
     <input class="chats-input" value="ivan@example.com" placeholder="E-mail" type="email">
     <input class="chats-input" value="1234567890" placeholder="Пароль" type="password">
-    <a class="auth-button" href="/chats" target>ВХОД</a>
-    <a class="auth-link" href="/registration" target>ЕЩЁ НЕ ЗАРЕГИСТРИРОВАНЫ?</a>
+    <a class="auth-button" href="/chats" onclick="{{setPage '/chats' }}">ВХОД</a>
+    <a class="auth-link" href="/registration" onclick="{{setPage '/registration' }}">ЕЩЁ НЕ ЗАРЕГИСТРИРОВАНЫ?</a>
 </form>

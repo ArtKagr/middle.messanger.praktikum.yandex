@@ -9,9 +9,14 @@ export default defineConfig({
     },
     plugins: [handlebars({
         partialDirectory: resolve(__dirname, 'src/partials'),
-        context: () => ({
-            username: 'Tyotya Motya'
-        })
+        helpers: {
+            setPage (page) {
+              console.log(page)
+            }
+        },
+        context: {
+            page: '/'
+        }
     })],
-    css: { postcss: './postcss.config.js' }
+    css: { postcss: 'postcss.config.js' }
 });

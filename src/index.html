@@ -7,12 +7,17 @@
     <title>Practicum Messenger</title>
   </head>
   <body>
-    <div class="layout -flex">
-        {{>default}}
-        {{>registration}}
-    </div>
-    <div class="layout">
-        {{>chats}}
-    </div>
+      <div class="layout -flex">
+          {{>default}}
+      </div>
+      <div class="layout -flex">
+          {{>registration}}
+      </div>
+      <div class="layout">
+          {{>chats}}
+      </div>
+      <div class="layout -flex">
+          {{>error}}
+      </div>
   </body>
 </html>
