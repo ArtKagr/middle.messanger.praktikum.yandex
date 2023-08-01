@@ -31,7 +31,7 @@
 
 ## Netlify
 
-[Ссылка](https://profound-kashata-b29c20.netlify.app/)
+[Ссылка](https://glowing-ganache-d299a5.netlify.app)
 
 ## Pull request:
 
