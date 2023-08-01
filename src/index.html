@@ -6,20 +6,26 @@
     <title>Practicum Messenger</title>
   </head>
   <body>
-      <div class="layout -flex">
-          {{>forms/auth}}
-      </div>
-      <div class="layout -flex">
-          {{>forms/registration}}
-      </div>
-      <div class="layout">
-          {{>chats/index}}
-      </div>
-      <div class="layout -flex">
-          {{>error/not-found}}
-      </div>
-      <div class="layout -flex">
-          {{>error/server-error}}
-      </div>
+      <div id="root"></div>
+      <script>
+          const currentPath = location.pathname
+
+          switch (currentPath) {
+              case '/':
+                  document.querySelector('#root').innerHTML = `<div class="layout -flex">{{>forms/auth}}</div>`;
+                  break;
+              case '/registration':
+                  document.querySelector('#root').innerHTML = `<div class="layout -flex">{{>forms/registration}}</div>`;
+                  break;
+              case '/chats':
+                  document.querySelector('#root').innerHTML = `<div class="layout">{{>chats/index}}</div>`;
+                  break;
+              case '/500':
+                  document.querySelector('#root').innerHTML = `<div class="layout -flex">{{>error/server-error}}</div>`;
+                  break;
+              default:
+                  document.querySelector('#root').innerHTML = `<div class="layout -flex">{{>error/not-found}}</div>`;
+          }
+      </script>
   </body>
 </html>
