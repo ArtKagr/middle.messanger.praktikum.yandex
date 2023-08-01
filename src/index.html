@@ -7,19 +7,19 @@
   </head>
   <body>
       <div class="layout -flex">
-          {{>default}}
+          {{>forms/auth}}
       </div>
       <div class="layout -flex">
-          {{>registration}}
+          {{>forms/registration}}
       </div>
       <div class="layout">
-          {{>chats}}
+          {{>chats/index}}
       </div>
       <div class="layout -flex">
-          {{>error}}
+          {{>error/not-found}}
       </div>
       <div class="layout -flex">
-          {{>backend-error}}
+          {{>error/server-error}}
       </div>
   </body>
 </html>
