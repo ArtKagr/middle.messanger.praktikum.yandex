@@ -1,0 +1,23 @@
+<div class="{{chat.menu.users.class}}">
+    {{#each chat.menu.users.items as |user| }}
+        <div class="{{user.class}}">
+            <div class="{{user.avatar.class}}"></div>
+            <div class="{{user.content.class}}">
+                <span class="{{user.content.title.class}}">
+                    {{user.content.title.value}}
+                </span>
+                <span class="{{user.content.message.class}}">
+                    {{user.content.message.value}}
+                </span>
+            </div>
+            <div class="{{user.content.data.class}}">
+                <span class="{{user.content.data.time.class}}">
+                    {{user.content.data.time.value}}
+                </span>
+                <span class="{{user.content.data.message.class}}">
+                    {{user.content.data.message.value}}
+                </span>
+            </div>
+        </div>
+    {{/each}}
+</div>

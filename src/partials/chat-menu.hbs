@@ -1,0 +1,25 @@
+<div class="{{chat.menu.class}}">
+    <div class="{{chat.menu.settings.class}}">
+        <div class="{{chat.menu.settings.user.class}}">
+            <div class="{{chat.menu.settings.user.avatar.class}}"></div>
+            <div class="{{chat.menu.settings.user.content.class}}">
+                <span class="{{chat.menu.settings.user.content.title.class}}">
+                    {{chat.menu.settings.user.content.title.value}}
+                </span>
+                <span class="{{chat.menu.settings.user.content.message.class}}">
+                    {{chat.menu.settings.user.content.message.value}}
+                </span>
+            </div>
+            <div class="{{chat.menu.settings.user.settings.class}}">
+                {{>icon-settings}}
+            </div>
+        </div>
+        <input
+                class="{{chat.menu.settings.search.class}}"
+                placeholder="{{chat.menu.settings.search.placeholder}}"
+                type="{{chat.menu.settings.search.type}}"
+                value="{{chat.menu.settings.search.value}}"
+        >
+    </div>
+    {{>chat-menu-users}}
+</div>

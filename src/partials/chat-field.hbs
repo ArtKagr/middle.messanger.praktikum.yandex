@@ -1,0 +1,24 @@
+<div class="{{chat.field.class}}">
+    <div class="{{chat.field.header.class}}">
+        <div class="{{chat.field.header.content.class}}">
+            <span class="{{chat.field.header.content.title.class}}">
+                {{chat.field.header.content.title.value}}
+            </span>
+            <span class="{{chat.field.header.content.message.class}}">
+                {{chat.field.header.content.message.value}}
+            </span>
+        </div>
+        <div class="{{chat.field.menu.class}}">
+            {{>icon-dots}}
+        </div>
+    </div>
+    <div class="{{chat.field.message-field.class}}">
+        <div class="{{chat.field.message-field.icon.class}}">
+            {{>icon-attach}}
+        </div>
+        <input
+            class="{{chat.field.message-field.input.class}}"
+            placeholder="{{chat.field.message-field.input.placeholder}}"
+        >
+    </div>
+</div>
