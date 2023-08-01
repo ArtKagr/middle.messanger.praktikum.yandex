@@ -1,0 +1,32 @@
+@import 'src/styles/components/input.css';
+@import 'src/styles/components/title.css';
+@import 'src/styles/components/button.css';
+@import 'src/styles/components/link.css';
+@import 'src/styles/components/form.css';
+@import 'src/styles/pages/chats.css';
+@import 'src/styles/layout/main.css';
+@import 'src/styles/modules/user.css';
+@import 'src/styles/modules/header.css';
+@import 'src/styles/modules/messageField.css';
+
+@font-face {
+    font-family: Roboto-Regular;
+    src: url(src/fonts/Roboto-Regular.ttf);
+}
+
+html {
+    font-family: 'Roboto-Regular', sans-serif;
+}
+
+body {
+    margin: 0;
+}
+
+::-webkit-scrollbar {
+    width: 3px;
+    background-color: #f9f9fd;
+
+    &-thumb {
+        background-color: rgba(196, 196, 196, 0.5);
+    }
+}

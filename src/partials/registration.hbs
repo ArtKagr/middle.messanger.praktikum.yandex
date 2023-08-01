@@ -1,0 +1,8 @@
+<form class="{{formClass}}">
+    <h1 class="title-auth">Регистрация</h1>
+    {{#each inputs.registration as |input| }}
+        <input class="{{input.class}}" value="{{value}}" placeholder="{{placeholder}}" type="{{type}}">
+    {{/each}}
+    <a class="auth-button" href="/chats">ЗАРЕГИСТРИРОВАТЬСЯ</a>
+    <a class="auth-link" href="/registration">ВОЙТИ</a>
+</form>
