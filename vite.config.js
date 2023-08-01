@@ -16,40 +16,40 @@ export default defineConfig({
                   title: { class: 'title-error', value: '404' },
                   'subtitle-main': { class: 'subtitle-main', value: 'Такой страницы нет' },
                   'subtitle-secondary': { class: 'subtitle-secondary', value: 'Мы знаем о проблеме и уже чиним сервис. Скоро все заработает.' },
-                  button: { class: 'auth-button notFound', href: '/chats', value: 'НАЗАД К ЧАТАМ' }
+                  button: { class: 'button notFound', href: '/chats', value: 'НАЗАД К ЧАТАМ' }
               },
               '500': {
                   title: { class: 'title-error', value: '500' },
                   'subtitle-main': { class: 'subtitle-main', value: 'У нас проблема' },
                   'subtitle-secondary': { class: 'subtitle-secondary', value: 'Возможно она была удалена или перенесена на другой адрес.' },
-                  button: { class: 'auth-button notFound', href: '/chats', value: 'НАЗАД К ЧАТАМ' }
+                  button: { class: 'button notFound', href: '/chats', value: 'НАЗАД К ЧАТАМ' }
               }
             },
             auth: {
               title: { class: 'title-auth', value: 'Авторизация' },
               inputs: [
-                  { class: 'chats-input', value: 'ivan@example.com', placeholder: 'E-mail', type: 'email' },
-                  { class: 'chats-input', value: '1234567890', placeholder: 'Пароль', type: 'password' }
+                  { class: 'input', value: 'ivan@example.com', placeholder: 'E-mail', type: 'email' },
+                  { class: 'input', value: '1234567890', placeholder: 'Пароль', type: 'password' }
               ],
               buttons: [
-                  { class: 'auth-button', href: '/chats', value: 'ВХОД' },
+                  { class: 'button', href: '/chats', value: 'ВХОД' },
                   { class: 'auth-link', href: '/registration', value: 'ЕЩЁ НЕ ЗАРЕГИСТРИРОВАНЫ?' }
               ]
             },
             registration: {
                 title: { class: 'title-auth', value: 'Регистрация' },
                 inputs: [
-                    { class: 'chats-input', value: 'ivan@example.com', placeholder: 'E-mail', type: 'email' },
-                    { class: 'chats-input', value: 'ivanivanov', placeholder: 'Логин', type: 'text' },
-                    { class: 'chats-input', value: 'Иван', placeholder: 'Имя', type: 'text' },
-                    { class: 'chats-input', value: 'Иванов', placeholder: 'Фамилия', type: 'text' },
-                    { class: 'chats-input', value: 'Вано', placeholder: 'Отображаемое имя', type: 'text' },
-                    { class: 'chats-input', value: '+79099673030', placeholder: 'Телефон', type: 'text' },
-                    { class: 'chats-input', value: '1234567890', placeholder: 'Пароль', type: 'password' },
-                    { class: 'chats-input', value: '1234567890', placeholder: 'Повторите пароль', type: 'password' }
+                    { class: 'input', value: 'ivan@example.com', placeholder: 'E-mail', type: 'email' },
+                    { class: 'input', value: 'ivanivanov', placeholder: 'Логин', type: 'text' },
+                    { class: 'input', value: 'Иван', placeholder: 'Имя', type: 'text' },
+                    { class: 'input', value: 'Иванов', placeholder: 'Фамилия', type: 'text' },
+                    { class: 'input', value: 'Вано', placeholder: 'Отображаемое имя', type: 'text' },
+                    { class: 'input', value: '+79099673030', placeholder: 'Телефон', type: 'text' },
+                    { class: 'input', value: '1234567890', placeholder: 'Пароль', type: 'password' },
+                    { class: 'input', value: '1234567890', placeholder: 'Повторите пароль', type: 'password' }
                 ],
                 buttons: [
-                    { class: 'auth-button', href: '/', value: 'ЗАРЕГИСТРИРОВАТЬСЯ' },
+                    { class: 'button', href: '/', value: 'ЗАРЕГИСТРИРОВАТЬСЯ' },
                     { class: 'auth-link', href: '/', value: 'ВОЙТИ' }
                 ]
             },
@@ -494,6 +494,5 @@ export default defineConfig({
                 }
             }
         }
-    })],
-    css: { postcss: 'postcss.config.js' }
+    })]
 });
