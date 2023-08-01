@@ -49,7 +49,7 @@ export default defineConfig({
                     { class: 'chats-input', value: '1234567890', placeholder: 'Повторите пароль', type: 'password' }
                 ],
                 buttons: [
-                    { class: 'auth-button', href: '/registration', value: 'ЗАРЕГИСТРИРОВАТЬСЯ' },
+                    { class: 'auth-button', href: '/', value: 'ЗАРЕГИСТРИРОВАТЬСЯ' },
                     { class: 'auth-link', href: '/', value: 'ВОЙТИ' }
                 ]
             },
