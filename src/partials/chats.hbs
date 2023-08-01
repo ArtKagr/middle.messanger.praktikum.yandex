@@ -12,192 +12,28 @@
             </svg>
         </div>
     </div>
-    <input class="chats-input-search" value="" placeholder="Поиск" type="text"></div> <div class="chats-menu-settings-users">
-    <div class="chats-menu-settings-user">
-        <div class="user-avatar"></div>
-        <div class="chats-menu-settings-user-content">
-            <span class="user-title">Кондрат</span>
-            <span class="user-message">Ты чего?</span>
-        </div>
-        <div class="flex-column-wrapper">
-            <span class="user-time">21:14</span>
-            <span class="user-new_message">1</span>
-        </div>
+        <input class="chats-input-search" value="" placeholder="Поиск" type="text">
     </div>
-
-    <div class="chats-menu-settings-user">
-        <div class="user-avatar"></div>
-        <div class="chats-menu-settings-user-content">
-            <span class="user-title">Frontend news</span>
-            <span class="user-message">Друзья, мы запускаем новую версию продукта</span>
-        </div>
-        <div class="flex-column-wrapper">
-            <span class="user-time">20:01</span>
-            <span class="user-new_message">4</span>
-        </div>
+    <div class="chats-menu-settings-users">
+        {{#each chat.users as |user| }}
+            <div class="{{user.class}}">
+                <div class="{{user.avatar.class}}"></div>
+                <div class="{{user.content.class}}">
+                    <span class="{{user.content.title.class}}">{{user.content.title.value}}</span>
+                    <span class="{{user.content.message.class}}">{{user.content.message.value}}</span>
+                </div>
+                <div class="{{user.content.data.class}}">
+                    <span class="{{user.content.data.time.class}}">{{user.content.data.time.value}}</span>
+                    <span class="{{user.content.data.message.class}}">{{user.content.data.message.value}}</span>
+                </div>
+            </div>
+        {{/each}}
     </div>
-
-    <div class="chats-menu-settings-user">
-        <div class="user-avatar"></div>
-        <div class="chats-menu-settings-user-content">
-            <span class="user-title">Тёща</span>
-            <span class="user-message">А я же говорила...</span>
-        </div>
-        <div class="flex-column-wrapper">
-            <span class="user-time">19:55</span>
-            <span class=""></span>
-        </div>
-    </div>
-
-    <div class="chats-menu-settings-user">
-        <div class="user-avatar"></div>
-        <div class="chats-menu-settings-user-content">
-            <span class="user-title">Daily M</span>
-            <span class="user-message">Почему вы ещё не создали свою версию</span>
-        </div>
-        <div class="flex-column-wrapper">
-            <span class="user-time">16:01</span>
-            <span class=""></span>
-        </div>
-    </div>
-
-    <div class="chats-menu-settings-user">
-        <div class="user-avatar"></div>
-        <div class="chats-menu-settings-user-content">
-            <span class="user-title">Встреча выпускников</span>
-            <span class="user-message">Евгений: а может под мост?</span>
-        </div>
-        <div class="flex-column-wrapper">
-            <span class="user-time">14:02</span>
-            <span class=""></span>
-        </div>
-    </div>
-
-    <div class="chats-menu-settings-user -active">
-        <div class="user-avatar"></div>
-        <div class="chats-menu-settings-user-content">
-            <span class="user-title">ЯжДизайнер</span>
-            <span class="user-message">Т-текстуры</span>
-        </div>
-        <div class="flex-column-wrapper">
-            <span class="user-time">21:13</span>
-            <span class=""></span>
-        </div>
-    </div>
-
-    <div class="chats-menu-settings-user">
-        <div class="user-avatar"></div>
-        <div class="chats-menu-settings-user-content">
-            <span class="user-title">Кто-то очень умный</span>
-            <span class="user-message">А как вы хотели</span>
-        </div>
-        <div class="flex-column-wrapper">
-            <span class="user-time">21:13</span>
-            <span class=""></span>
-        </div>
-    </div>
-
-    <div class="chats-menu-settings-user">
-        <div class="user-avatar"></div>
-        <div class="chats-menu-settings-user-content">
-            <span class="user-title">Job for Middle</span>
-            <span class="user-message">Ищем миддла в команду</span>
-        </div>
-        <div class="flex-column-wrapper">
-            <span class="user-time">21:13</span>
-            <span class=""></span>
-        </div>
-    </div>
-
-    <div class="chats-menu-settings-user">
-        <div class="user-avatar"></div>
-        <div class="chats-menu-settings-user-content">
-            <span class="user-title">Андрей</span>
-            <span class="user-message">Завтра всё в силе?</span>
-        </div>
-        <div class="flex-column-wrapper">
-            <span class="user-time">21:13</span>
-            <span class=""></span>
-        </div>
-    </div>
-
-    <div class="chats-menu-settings-user">
-        <div class="user-avatar"></div>
-        <div class="chats-menu-settings-user-content">
-            <span class="user-title">ЯжДизайнер</span>
-            <span class="user-message">Т-текстуры</span>
-        </div>
-        <div class="flex-column-wrapper">
-            <span class="user-time">21:13</span>
-            <span class=""></span>
-        </div>
-    </div>
-
-    <div class="chats-menu-settings-user">
-        <div class="user-avatar"></div>
-        <div class="chats-menu-settings-user-content">
-            <span class="user-title">Кто-то очень умный</span>
-            <span class="user-message">А как вы хотели</span>
-        </div>
-        <div class="flex-column-wrapper">
-            <span class="user-time">21:13</span>
-            <span class=""></span>
-        </div>
-    </div>
-
-    <div class="chats-menu-settings-user">
-        <div class="user-avatar"></div>
-        <div class="chats-menu-settings-user-content">
-            <span class="user-title">Английский язык</span>
-            <span class="user-message">Время пришло</span>
-        </div>
-        <div class="flex-column-wrapper">
-            <span class="user-time">21:13</span>
-            <span class=""></span>
-        </div>
-    </div>
-
-    <div class="chats-menu-settings-user">
-        <div class="user-avatar"></div>
-        <div class="chats-menu-settings-user-content">
-            <span class="user-title">Тёща</span>
-            <span class="user-message">А я же говорила...</span>
-        </div>
-        <div class="flex-column-wrapper">
-            <span class="user-time">21:13</span>
-            <span class=""></span>
-        </div>
-    </div>
-
-    <div class="chats-menu-settings-user">
-        <div class="user-avatar"></div>
-        <div class="chats-menu-settings-user-content">
-            <span class="user-title">Английский язык</span>
-            <span class="user-message">Время пришло</span>
-        </div>
-        <div class="flex-column-wrapper">
-            <span class="user-time">21:13</span>
-            <span class=""></span>
-        </div>
-    </div>
-
-    <div class="chats-menu-settings-user">
-        <div class="user-avatar"></div>
-        <div class="chats-menu-settings-user-content">
-            <span class="user-title">Тёща</span>
-            <span class="user-message">А я же говорила...</span>
-        </div>
-        <div class="flex-column-wrapper">
-            <span class="user-time">21:13</span>
-            <span class=""></span>
-        </div>
-    </div>
-</div>
 </div>
 <div class="chats-field">
    <div class="message-header">
         <div class="message-header-content">
-           <span class="message-header-content-title">Daily M</span>
+           <span class="message-header-content-title">ЯжДизайнер</span>
            <span class="message-header-content-message">был(а) 35 минут назад</span>
         </div>
         <div class="message-header-menu">
