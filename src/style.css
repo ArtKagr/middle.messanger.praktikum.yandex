@@ -1,13 +1,321 @@
-@import 'src/styles/components/input.css';
-@import 'src/styles/components/title.css';
-@import 'src/styles/components/button.css';
-@import 'src/styles/components/link.css';
-@import 'src/styles/components/form.css';
-@import 'src/styles/pages/chats.css';
-@import 'src/styles/layout/main.css';
-@import 'src/styles/modules/user.css';
-@import 'src/styles/modules/header.css';
-@import 'src/styles/modules/messageField.css';
+.chats-input {
+    width: 343px;
+    padding: 16px 12px;
+    border-radius: 10px;
+    border: none;
+    background-color: rgba(189, 189, 189, 0.3);
+    font-size: 16px;
+    margin-bottom: 16px;
+
+    &:focus-visible {
+        outline: none;
+        border: 1px solid #212121;
+        padding: 15px 12px;
+    }
+
+    &-search {
+        width: 256px;
+        padding: 6px 12px;
+        border: none;
+        border-radius: 5px;
+        background-color: rgba(189, 189, 189, 0.3);
+        font-size: 14px;
+
+        &:focus-visible {
+            outline: none;
+            border: 1px solid #212121;
+            padding: 5px 12px;
+        }
+    }
+}
+
+.auth-button {
+    margin-top: 16px;
+    font-weight: 500;
+    font-size: 14px;
+    color: #fff;
+    padding: 20px 0;
+    border-radius: 10px;
+    border: none;
+    background-color: #3F51B5;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    letter-spacing: 0.0125em;
+}
+
+.notFound {
+    width: 215px;
+    margin: 16px auto 0;
+}
+
+.auth-link {
+    text-decoration: none;
+    text-align: center;
+    margin-top: 36px;
+    font-size: 14px;
+    color: #3F51B5;
+    font-weight: 500;
+}
+
+.title {
+
+    &-auth {
+        font-size: 34px;
+        color: #212121;
+        text-align: center;
+        margin: 0 0 32px 0;
+        line-height: 1;
+    }
+
+    &-error {
+        font-size: 140px;
+        font-weight: 500;
+        color: #3F51B5;
+        margin: 0;
+        text-align: center;
+        line-height: 1;
+    }
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    margin: auto auto;
+
+    &-input {
+        width: 343px;
+        padding: 16px 12px;
+        border-radius: 10px;
+        border: none;
+        background-color: rgba(189, 189, 189, 0.3);
+        font-size: 16px;
+        margin-bottom: 16px;
+
+        &:focus-visible {
+            outline: none;
+            border: 1px solid #212121;
+            padding: 15px 12px;
+        }
+    }
+
+    &-button {
+        margin-top: 16px;
+        font-weight: 500;
+        font-size: 14px;
+        color: #fff;
+        padding: 20px 0;
+        border-radius: 10px;
+        border: none;
+        background-color: #3F51B5;
+        cursor: pointer;
+        text-align: center;
+        text-decoration: none;
+        letter-spacing: 0.0125em;
+    }
+}
+
+.subtitle {
+
+    &-main {
+        font-size: 34px;
+        text-align: center;
+        color: #212121;
+        margin: 30px 0 16px 0;
+    }
+
+    &-secondary {
+        text-align: center;
+        line-height: 1.4;
+        color: #757575;
+        margin-bottom: 40px;
+        width: 345px;
+    }
+}
+
+.chats {
+    display: flex;
+
+    &-menu {
+        display: flex;
+        flex-direction: column;
+        background-color: rgba(197, 202, 233, 0.2);
+        box-shadow: 1px 0 1px rgba(0, 0, 0, 0.05);
+        width: 310px;
+        height: 100vh;
+
+        &-settings {
+            display: flex;
+            flex-direction: column;
+            padding: 20px 10px 10px 20px;
+
+            &-users {
+                display: flex;
+                flex-direction: column;
+                overflow: auto;
+            }
+
+            &-user {
+                display: flex;
+                align-items: center;
+                padding: 10px 10px 10px 20px;
+                cursor: pointer;
+
+                &:hover {
+                    background-color: rgba(0, 188, 212, 0.4);
+                }
+
+                &.-active {
+                    background-color: rgba(0, 188, 212, 0.4);
+                }
+
+                &-content {
+                    display: flex;
+                    flex-direction: column;
+                    width: calc(100% - 75px);
+                }
+            }
+
+            &-user_settings {
+                display: flex;
+                align-items: center;
+                margin-bottom: 20px;
+                user-select: none;
+            }
+        }
+    }
+
+    &-field {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        width: calc(100% - 350px);
+        height: 100vh;
+    }
+
+}
+
+.flex-column-wrapper {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.message-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 20px;
+    background-color: rgba(197, 202, 233, 0.2);
+    width: 100%;
+
+    &-content {
+        display: flex;
+        flex-direction: column;
+
+        &-title {
+            color: #212121;
+            user-select: none;
+        }
+
+        &-message {
+            font-size: 14px;
+            color: #757575;
+            user-select: none;
+        }
+
+    }
+
+    &-menu {
+        cursor: pointer;
+    }
+}
+
+.layout {
+    width: 100%;
+    height: 100vh;
+
+    &.-flex {
+        display: flex;
+    }
+}
+
+.user {
+
+    &-avatar {
+        width: 44px;
+        height: 44px;
+        border-radius: 100px;
+        background-color: rgba(196, 196, 196, 0.5);
+        margin-right: 8px;
+    }
+
+    &-title {
+        color: #212121;
+        letter-spacing: 0.0015em;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+    }
+
+    &-message {
+        color: #757575;
+        font-size: 14px;
+        letter-spacing: 0.0025em;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+    }
+
+    &-time {
+        font-size: 10px;
+        font-weight: 500;
+        color: #757575;
+    }
+
+    &-new_message {
+        width: 6px;
+        height: 16px;
+        border-radius: 100px;
+        background-color: #00BCD4;
+        font-size: 10px;
+        font-weight: 500;
+        color: #fff;
+        line-height: 1.5;
+        padding: 2px 7px;
+        margin: 4px 0 0 6px;
+
+    }
+
+    &-settings {
+        cursor: pointer;
+    }
+}
+
+.message-field {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    padding: 20px;
+    background-color: rgba(197, 202, 233, 0.2);
+
+    &-attach {
+        margin-right: 18px;
+        cursor: pointer;
+    }
+
+    &-input {
+        border: none;
+        background-color: rgba(197, 202, 233, 0);
+        font-size: 14px;
+        color: #757575;
+        width: 100%;
+
+        &:focus-visible {
+            outline: none;
+        }
+    }
+}
 
 @font-face {
     font-family: Roboto-Regular;
