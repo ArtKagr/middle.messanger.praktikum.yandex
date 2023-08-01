@@ -1,6 +1,14 @@
-<form class="form">
-    <h1 class="title-error">500</h1>
-    <h2 class="subtitle-main">У нас проблема</h2>
-    <span class="subtitle-secondary">Мы знаем о проблеме и уже чиним сервис. Скоро все заработает.</span>
-    <a class="auth-button notFound" href="/chats" target="">НАЗАД К ЧАТАМ</a>
+<form class="{{formClass}}">
+    <h1 class="{{error.500.title.class}}">
+        {{error.500.title.value}}
+    </h1>
+    <h2 class="{{error.500.subtitle-main.class}}">
+        {{error.500.subtitle-main.value}}
+    </h2>
+    <span class="{{error.500.subtitle-secondary.class}}">
+        {{error.500.subtitle-secondary.value}}
+    </span>
+    <a class="{{error.500.button.class}}" href="{{error.500.button.href}}">
+        {{error.500.button.value}}
+    </a>
 </form>
