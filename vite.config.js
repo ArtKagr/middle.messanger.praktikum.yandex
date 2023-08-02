@@ -33,7 +33,7 @@ export default defineConfig({
               ],
               buttons: [
                   { class: 'button', href: '/chats', value: 'ВХОД' },
-                  { class: 'auth-link', href: '/registration', value: 'ЕЩЁ НЕ ЗАРЕГИСТРИРОВАНЫ?' }
+                  { class: 'link', href: '/registration', value: 'ЕЩЁ НЕ ЗАРЕГИСТРИРОВАНЫ?' }
               ]
             },
             registration: {
@@ -50,7 +50,7 @@ export default defineConfig({
                 ],
                 buttons: [
                     { class: 'button', href: '/', value: 'ЗАРЕГИСТРИРОВАТЬСЯ' },
-                    { class: 'auth-link', href: '/', value: 'ВОЙТИ' }
+                    { class: 'link', href: '/', value: 'ВОЙТИ' }
                 ]
             },
             chat: {
