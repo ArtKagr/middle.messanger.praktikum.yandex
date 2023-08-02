@@ -5,7 +5,7 @@
         align-items: center;
         justify-content: space-between;
         padding: 10px 20px;
-        background-color: rgba(197, 202, 233, 0.2);
+        background-color: var(--gloomy);
         width: 100%;
 
         &-content {
@@ -13,13 +13,13 @@
             flex-direction: column;
 
             &-title {
-                color: #212121;
+                color: var(--main);
                 user-select: none;
             }
 
             &-message {
                 font-size: 14px;
-                color: #757575;
+                color: var(--grey);
                 user-select: none;
             }
 
@@ -35,7 +35,7 @@
         align-items: center;
         width: 100%;
         padding: 20px;
-        background-color: rgba(197, 202, 233, 0.2);
+        background-color: var(--gloomy);
 
         &-attach {
             margin-right: 18px;
@@ -44,9 +44,9 @@
 
         &-input {
             border: none;
-            background-color: rgba(197, 202, 233, 0);
+            background-color: var(--very_gloomy);
             font-size: 14px;
-            color: #757575;
+            color: var(--grey);
             width: 100%;
 
             &:focus-visible {

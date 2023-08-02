@@ -1,6 +1,6 @@
 <form class="form" action="/">
     <h1 class="form-title-auth">Регистрация</h1>
-    {{#each registration as |input| }}
+    {{#each forms.registration as |input| }}
         <input class="form-input" value="{{input.value}}" placeholder="{{input.placeholder}}" type="{{input.type}}" name="{{input.name}}">
     {{/each}}
     <input type="submit" class="form-button" value="ЗАРЕГИСТРИРОВАТЬСЯ">
