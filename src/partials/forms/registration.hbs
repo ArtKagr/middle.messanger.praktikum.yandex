@@ -1,13 +1,8 @@
-<form class="{{formClass}}">
-    <h1 class="{{registration.title.class}}">
-        {{registration.title.value}}
-    </h1>
-    {{#each registration.inputs as |input| }}
-        <input class="{{input.class}}" value="{{input.value}}" placeholder="{{input.placeholder}}" type="{{input.type}}">
+<form class="form" action="/">
+    <h1 class="form-title-auth">Регистрация</h1>
+    {{#each registration as |input| }}
+        <input class="form-input" value="{{input.value}}" placeholder="{{input.placeholder}}" type="{{input.type}}" name="{{input.name}}">
     {{/each}}
-    {{#each registration.buttons as |button| }}
-        <a class="{{button.class}}" href="{{button.href}}">
-            {{button.value}}
-        </a>
-    {{/each}}
+    <input type="submit" class="form-button" value="ЗАРЕГИСТРИРОВАТЬСЯ">
+    <a class="form-link" href="/">ВОЙТИ</a>
 </form>

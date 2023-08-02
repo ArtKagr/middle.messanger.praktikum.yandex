@@ -9,488 +9,209 @@ export default defineConfig({
     },
     plugins: [handlebars({
         partialDirectory: resolve(__dirname, 'src/partials'),
+        helpers: {
+            chatClass: (chatId) => `chats-menu-settings-user ${chatId === 7 ? '-active' : ''}`
+        },
         context: {
-            formClass: 'form',
-            error: {
-              '404': {
-                  title: { class: 'title-error', value: '404' },
-                  'subtitle-main': { class: 'subtitle-main', value: 'Такой страницы нет' },
-                  'subtitle-secondary': { class: 'subtitle-secondary', value: 'Мы знаем о проблеме и уже чиним сервис. Скоро все заработает.' },
-                  button: { class: 'button notFound', href: '/chats', value: 'НАЗАД К ЧАТАМ' }
-              },
-              '500': {
-                  title: { class: 'title-error', value: '500' },
-                  'subtitle-main': { class: 'subtitle-main', value: 'У нас проблема' },
-                  'subtitle-secondary': { class: 'subtitle-secondary', value: 'Возможно она была удалена или перенесена на другой адрес.' },
-                  button: { class: 'button notFound', href: '/chats', value: 'НАЗАД К ЧАТАМ' }
-              }
-            },
-            auth: {
-              title: { class: 'title-auth', value: 'Авторизация' },
-              inputs: [
-                  { class: 'input', value: 'ivan@example.com', placeholder: 'E-mail', type: 'email' },
-                  { class: 'input', value: '1234567890', placeholder: 'Пароль', type: 'password' }
-              ],
-              buttons: [
-                  { class: 'button', href: '/chats', value: 'ВХОД' },
-                  { class: 'link', href: '/registration', value: 'ЕЩЁ НЕ ЗАРЕГИСТРИРОВАНЫ?' }
-              ]
-            },
-            registration: {
-                title: { class: 'title-auth', value: 'Регистрация' },
-                inputs: [
-                    { class: 'input', value: 'ivan@example.com', placeholder: 'E-mail', type: 'email' },
-                    { class: 'input', value: 'ivanivanov', placeholder: 'Логин', type: 'text' },
-                    { class: 'input', value: 'Иван', placeholder: 'Имя', type: 'text' },
-                    { class: 'input', value: 'Иванов', placeholder: 'Фамилия', type: 'text' },
-                    { class: 'input', value: 'Вано', placeholder: 'Отображаемое имя', type: 'text' },
-                    { class: 'input', value: '+79099673030', placeholder: 'Телефон', type: 'text' },
-                    { class: 'input', value: '1234567890', placeholder: 'Пароль', type: 'password' },
-                    { class: 'input', value: '1234567890', placeholder: 'Повторите пароль', type: 'password' }
-                ],
-                buttons: [
-                    { class: 'button', href: '/', value: 'ЗАРЕГИСТРИРОВАТЬСЯ' },
-                    { class: 'link', href: '/', value: 'ВОЙТИ' }
-                ]
-            },
+            auth: [
+                { value: 'ivan@example.com', placeholder: 'E-mail', type: 'email', name: 'login' },
+                { value: '1234567890', placeholder: 'Пароль', type: 'password', name: 'password' }
+            ],
+            registration: [
+                { value: 'ivan@example.com', placeholder: 'E-mail', type: 'email', name: 'email' },
+                { value: 'ivanivanov', placeholder: 'Логин', type: 'text', name: 'login' },
+                { value: 'Иван', placeholder: 'Имя', type: 'text', name: 'first_name' },
+                { value: 'Иванов', placeholder: 'Фамилия', type: 'text', name: 'second_name' },
+                { value: 'Вано', placeholder: 'Отображаемое имя', type: 'text', name: 'display_name' },
+                { value: '+79099673030', placeholder: 'Телефон', type: 'text', name: 'phone' },
+                { value: '1234567890', placeholder: 'Пароль', type: 'password', name: 'password' },
+                { value: '1234567890', placeholder: 'Повторите пароль', type: 'password', name: 'repeat_password' }
+            ],
             chat: {
-                class: 'chats',
                 menu: {
-                  class: 'chats-menu',
-                  settings: {
-                      class: 'chats-menu-settings',
-                      user: {
-                          class: 'chats-menu-settings-user_settings',
-                          avatar: {
-                              class: 'user-avatar'
-                          },
-                          content: {
-                              class: 'chats-menu-settings-user-content',
-                              title: {
-                                  class: 'user-title',
-                                  value: 'Иван Иванов'
-                              },
-                              message: {
-                                  class: 'user-message',
-                                  value: '+7 (909) 967 30 30'
-                              }
-                          },
-                          settings: {
-                              class: 'user-settings'
-                          }
-                      },
-                      search: {
-                          class: 'chats-input-search',
-                          placeholder: 'Поиск',
-                          type: 'text',
-                          value: ''
-                      }
-                  },
-                  users: {
-                    class: 'chats-menu-settings-users',
-                    items: [
-                        {
-                            class: 'chats-menu-settings-user',
-                            avatar: {
-                                class: 'user-avatar',
-                                value: null
-                            },
-                            content: {
-                                class: 'chats-menu-settings-user-content',
-                                title: {
-                                    class: 'user-title',
-                                    value: 'Кондарт'
-                                },
-                                message: {
-                                    class: 'user-message',
-                                    value: 'Ты чего?'
-                                },
-                                data: {
-                                    class: 'flex-column-wrapper',
-                                    time: {
-                                        class: 'user-time',
-                                        value: '21:14'
-                                    },
-                                    message: {
-                                        class: 'user-new_message',
-                                        value: '1'
-                                    }
-                                }
-                            }
-                        },
-                        {
-                            class: 'chats-menu-settings-user',
-                            avatar: {
-                                class: 'user-avatar',
-                                value: null
-                            },
-                            content: {
-                                class: 'chats-menu-settings-user-content',
-                                title: {
-                                    class: 'user-title',
-                                    value: 'Frontend news'
-                                },
-                                message: {
-                                    class: 'user-message',
-                                    value: 'Друзья, мы запускаем новую версию продукта'
-                                },
-                                data: {
-                                    class: 'flex-column-wrapper',
-                                    time: {
-                                        class: 'user-time',
-                                        value: '21:14'
-                                    },
-                                    message: {
-                                        class: 'user-new_message',
-                                        value: '4'
-                                    }
-                                }
-                            }
-                        },
-                        {
-                            class: 'chats-menu-settings-user',
-                            avatar: {
-                                class: 'user-avatar',
-                                value: null
-                            },
-                            content: {
-                                class: 'chats-menu-settings-user-content',
-                                title: {
-                                    class: 'user-title',
-                                    value: 'Тёща'
-                                },
-                                message: {
-                                    class: 'user-message',
-                                    value: 'А я же говорила...'
-                                },
-                                data: {
-                                    class: 'flex-column-wrapper',
-                                    time: {
-                                        class: 'user-time',
-                                        value: '21:14'
-                                    },
-                                    message: {}
-                                }
-                            }
-                        },
-                        {
-                            class: 'chats-menu-settings-user',
-                            avatar: {
-                                class: 'user-avatar',
-                                value: null
-                            },
-                            content: {
-                                class: 'chats-menu-settings-user-content',
-                                title: {
-                                    class: 'user-title',
-                                    value: 'Daily M'
-                                },
-                                message: {
-                                    class: 'user-message',
-                                    value: 'Почему вы ещё не создали свою версию'
-                                },
-                                data: {
-                                    class: 'flex-column-wrapper',
-                                    time: {
-                                        class: 'user-time',
-                                        value: '21:14'
-                                    },
-                                    message: {}
-                                }
-                            }
-                        },
-                        {
-                            class: 'chats-menu-settings-user',
-                            avatar: {
-                                class: 'user-avatar',
-                                value: null
-                            },
-                            content: {
-                                class: 'chats-menu-settings-user-content',
-                                title: {
-                                    class: 'user-title',
-                                    value: 'Встреча выпускников'
-                                },
-                                message: {
-                                    class: 'user-message',
-                                    value: 'Евгений: а может под мост?'
-                                },
-                                data: {
-                                    class: 'flex-column-wrapper',
-                                    time: {
-                                        class: 'user-time',
-                                        value: '14:02'
-                                    },
-                                    message: {}
-                                }
-                            }
-                        },
-                        {
-                            class: 'chats-menu-settings-user -active',
-                            avatar: {
-                                class: 'user-avatar',
-                                value: null
-                            },
-                            content: {
-                                class: 'chats-menu-settings-user-content',
-                                title: {
-                                    class: 'user-title',
-                                    value: 'ЯжДизайнер'
-                                },
-                                message: {
-                                    class: 'user-message',
-                                    value: 'Т-текстуры'
-                                },
-                                data: {
-                                    class: 'flex-column-wrapper',
-                                    time: {
-                                        class: 'user-time',
-                                        value: '21:13'
-                                    },
-                                    message: {}
-                                }
-                            }
-                        },
-                        {
-                            class: 'chats-menu-settings-user',
-                            avatar: {
-                                class: 'user-avatar',
-                                value: null
-                            },
-                            content: {
-                                class: 'chats-menu-settings-user-content',
-                                title: {
-                                    class: 'user-title',
-                                    value: 'Кто-то очень умный'
-                                },
-                                message: {
-                                    class: 'user-message',
-                                    value: 'А как вы хотели'
-                                },
-                                data: {
-                                    class: 'flex-column-wrapper',
-                                    time: {
-                                        class: 'user-time',
-                                        value: '21:18'
-                                    },
-                                    message: {}
-                                }
-                            }
-                        },
-                        {
-                            class: 'chats-menu-settings-user',
-                            avatar: {
-                                class: 'user-avatar',
-                                value: null
-                            },
-                            content: {
-                                class: 'chats-menu-settings-user-content',
-                                title: {
-                                    class: 'user-title',
-                                    value: 'Кто-то очень умный'
-                                },
-                                message: {
-                                    class: 'user-message',
-                                    value: 'А как вы хотели'
-                                },
-                                data: {
-                                    class: 'flex-column-wrapper',
-                                    time: {
-                                        class: 'user-time',
-                                        value: '21:18'
-                                    },
-                                    message: {}
-                                }
-                            }
-                        },
-                        {
-                            class: 'chats-menu-settings-user',
-                            avatar: {
-                                class: 'user-avatar',
-                                value: null
-                            },
-                            content: {
-                                class: 'chats-menu-settings-user-content',
-                                title: {
-                                    class: 'user-title',
-                                    value: 'Кто-то очень умный'
-                                },
-                                message: {
-                                    class: 'user-message',
-                                    value: 'А как вы хотели'
-                                },
-                                data: {
-                                    class: 'flex-column-wrapper',
-                                    time: {
-                                        class: 'user-time',
-                                        value: '21:18'
-                                    },
-                                    message: {}
-                                }
-                            }
-                        },
-                        {
-                            class: 'chats-menu-settings-user',
-                            avatar: {
-                                class: 'user-avatar',
-                                value: null
-                            },
-                            content: {
-                                class: 'chats-menu-settings-user-content',
-                                title: {
-                                    class: 'user-title',
-                                    value: 'Кто-то очень умный'
-                                },
-                                message: {
-                                    class: 'user-message',
-                                    value: 'А как вы хотели'
-                                },
-                                data: {
-                                    class: 'flex-column-wrapper',
-                                    time: {
-                                        class: 'user-time',
-                                        value: '21:18'
-                                    },
-                                    message: {}
-                                }
-                            }
-                        },
-                        {
-                            class: 'chats-menu-settings-user',
-                            avatar: {
-                                class: 'user-avatar',
-                                value: null
-                            },
-                            content: {
-                                class: 'chats-menu-settings-user-content',
-                                title: {
-                                    class: 'user-title',
-                                    value: 'Кто-то очень умный'
-                                },
-                                message: {
-                                    class: 'user-message',
-                                    value: 'А как вы хотели'
-                                },
-                                data: {
-                                    class: 'flex-column-wrapper',
-                                    time: {
-                                        class: 'user-time',
-                                        value: '21:18'
-                                    },
-                                    message: {}
-                                }
-                            }
-                        },
-                        {
-                            class: 'chats-menu-settings-user',
-                            avatar: {
-                                class: 'user-avatar',
-                                value: null
-                            },
-                            content: {
-                                class: 'chats-menu-settings-user-content',
-                                title: {
-                                    class: 'user-title',
-                                    value: 'Кто-то очень умный'
-                                },
-                                message: {
-                                    class: 'user-message',
-                                    value: 'А как вы хотели'
-                                },
-                                data: {
-                                    class: 'flex-column-wrapper',
-                                    time: {
-                                        class: 'user-time',
-                                        value: '21:18'
-                                    },
-                                    message: {}
-                                }
-                            }
-                        },
-                        {
-                            class: 'chats-menu-settings-user',
-                            avatar: {
-                                class: 'user-avatar',
-                                value: null
-                            },
-                            content: {
-                                class: 'chats-menu-settings-user-content',
-                                title: {
-                                    class: 'user-title',
-                                    value: 'Кто-то очень умный'
-                                },
-                                message: {
-                                    class: 'user-message',
-                                    value: 'А как вы хотели'
-                                },
-                                data: {
-                                    class: 'flex-column-wrapper',
-                                    time: {
-                                        class: 'user-time',
-                                        value: '21:18'
-                                    },
-                                    message: {}
-                                }
-                            }
-                        },
-                        {
-                            class: 'chats-menu-settings-user',
-                            avatar: {
-                                class: 'user-avatar',
-                                value: null
-                            },
-                            content: {
-                                class: 'chats-menu-settings-user-content',
-                                title: {
-                                    class: 'user-title',
-                                    value: 'Кто-то очень умный'
-                                },
-                                message: {
-                                    class: 'user-message',
-                                    value: 'А как вы хотели'
-                                },
-                                data: {
-                                    class: 'flex-column-wrapper',
-                                    time: {
-                                        class: 'user-time',
-                                        value: '21:18'
-                                    },
-                                    message: {}
-                                }
-                            }
-                        }
-                    ]
-                  },
+                    avatar_link: 'https://www.shutterstock.com/image-photo/greta-thunberg-fridays-future-event-260nw-1587812527.jpg',
+                    title: 'Иван Иванов',
+                    message: '+7 (909) 967 30 30',
+                    search: null
                 },
-                field: {
-                    class: 'chats-field',
-                    header: {
-                        class: 'message-header',
+                items: [
+                    {
+                        id: 0,
+                        avatar_link: null,
                         content: {
-                            class: 'message-header-content',
-                            title: {
-                                class: 'message-header-content-title',
-                                value: 'ЯжДизайнер'
-                            },
-                            message: {
-                                class: 'message-header-content-message',
-                                value: 'был(а) 35 минут назад'
+                            title: 'Кондрат',
+                            message: 'Ты чего?',
+                            data: {
+                                time: '21:14',
+                                new_messages: 1
                             }
-                        },
-                        menu: {
-                            class: 'message-header-menu"'
                         }
                     },
-                    'message-field': {
-                        class: 'message-field',
-                        icon: {
-                            class: 'message-field-attach'
-                        },
-                        input: {
-                            class: 'message-field-input',
-                            placeholder: 'Написать сообщение...'
+                    {
+                        id: 1,
+                        avatar_link: null,
+                        content: {
+                            title: 'Frontend news',
+                            message: 'Друзья, мы запускаем новую версию продукта',
+                            data: {
+                                time: '21:14',
+                                new_messages: 4
+                            }
+                        }
+                    },
+                    {
+                        id: 2,
+                        avatar_link: null,
+                        content: {
+                            title: 'Тёща',
+                            message: 'А я же говорила...',
+                            data: {
+                                time: '21:14',
+                                new_messages: null
+                            }
+                        }
+                    },
+                    {
+                        id: 3,
+                        avatar_link: null,
+                        content: {
+                            title: 'Daily M',
+                            message: 'Почему вы ещё не создали свою версию',
+                            data: {
+                                time: '21:14',
+                                new_messages: null
+                            }
+                        }
+                    },
+                    {
+                        id: 4,
+                        avatar_link: null,
+                        content: {
+                            title: 'Встреча выпускников',
+                            message: 'Евгений: а может под мост?',
+                            data: {
+                                time: '14:02',
+                                new_messages: null
+                            }
+                        }
+                    },
+                    {
+                        id: 5,
+                        avatar_link: null,
+                        content: {
+                            title: 'ЯжДизайнер',
+                            message: 'Т-текстуры',
+                            data: {
+                                time: '21:13',
+                                new_messages: null
+                            }
+                        }
+                    },
+                    {
+                        id: 6,
+                        avatar_link: null,
+                        content: {
+                            title: 'Кто-то очень умный',
+                            message: 'А как вы хотели',
+                            data: {
+                                time: '21:18',
+                                new_messages: null
+                            }
+                        }
+                    },
+                    {
+                        id: 7,
+                        avatar_link: 'https://www.shutterstock.com/image-photo/greta-thunberg-fridays-future-event-260nw-1587812527.jpg',
+                        content: {
+                            title: 'Двойник',
+                            message: 'Что за дела?',
+                            data: {
+                                time: '21:18',
+                                new_messages: 9
+                            }
+                        }
+                    },
+                    {
+                        id: 8,
+                        avatar_link: null,
+                        content: {
+                            title: 'Кто-то очень умный',
+                            message: 'А как вы хотели',
+                            data: {
+                                time: '21:18',
+                                new_messages: null
+                            }
+                        }
+                    },
+                    {
+                        id: 9,
+                        avatar_link: null,
+                        content: {
+                            title: 'Кто-то очень умный',
+                            message: 'А как вы хотели',
+                            data: {
+                                time: '21:18',
+                                new_messages: null
+                            }
+                        }
+                    },
+                    {
+                        id: 10,
+                        avatar_link: null,
+                        content: {
+                            title: 'Кто-то очень умный',
+                            message: 'А как вы хотели',
+                            data: {
+                                time: '21:18',
+                                new_messages: null
+                            }
+                        }
+                    },
+                    {
+                        id: 11,
+                        avatar_link: null,
+                        content: {
+                            title: 'Кто-то очень умный',
+                            message: 'А как вы хотели',
+                            data: {
+                                time: '21:18',
+                                new_messages: null
+                            }
+                        }
+                    },
+                    {
+                        id: 12,
+                        avatar_link: null,
+                        content: {
+                            title: 'Кто-то очень умный',
+                            message: 'А как вы хотели',
+                            data: {
+                                time: '21:18',
+                                new_messages: null
+                            }
+                        }
+                    },
+                    {
+                        id: 13,
+                        avatar_link: null,
+                        content: {
+                            title: 'Кто-то очень умный',
+                            message: 'А как вы хотели',
+                            data: {
+                                time: '21:18',
+                                new_messages: null
+                            }
                         }
                     }
+
+                ],
+                chat_field: {
+                    header: {
+                        title: 'ЯжДизайнер',
+                        message: 'был(а) 35 минут назад'
+                    },
+                    messages: {},
+                    message_field: null
                 }
             }
         }
