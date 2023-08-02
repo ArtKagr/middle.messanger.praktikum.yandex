@@ -1,7 +1,8 @@
 <p align="center">
     <img src="https://img.shields.io/badge/vite-4.4.5-ff96b4" />
-    <img src="https://img.shields.io/badge/node-16.0.0-blue" />
+    <img src="https://img.shields.io/badge/handlebars-16.0.0-blue" />
     <img src="https://img.shields.io/badge/express-4.18.1-green" />
+    <img src="https://img.shields.io/badge/node-1.6.0-blue" />
 </p>
 
 # Чат
@@ -15,7 +16,7 @@
     * 500: /500
     * 404: любая другая страница
 
-* Проект разрабатывается с использованием vite, postcss, express, node
+* Проект разрабатывается с использованием vite, handlebars, postcss, express, node
 
 ## Команды запуска
 
