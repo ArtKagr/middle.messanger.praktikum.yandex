@@ -5,7 +5,7 @@
     &-menu {
         display: flex;
         flex-direction: column;
-        background-color: rgba(197, 202, 233, 0.2);
+        background-color: var(--gloomy);
         box-shadow: 1px 0 1px rgba(0, 0, 0, 0.05);
         width: 310px;
         height: 100vh;
@@ -28,11 +28,11 @@
                 cursor: pointer;
 
                 &:hover {
-                    background-color: rgba(0, 188, 212, 0.4);
+                    background-color: var(--turquoise);
                 }
 
                 &.-active {
-                    background-color: rgba(0, 188, 212, 0.4);
+                    background-color: var(--turquoise);
                 }
 
                 &-content {
@@ -66,12 +66,12 @@
             padding: 6px 12px;
             border: none;
             border-radius: 5px;
-            background-color: rgba(189, 189, 189, 0.3);
+            background-color: var(--dark);
             font-size: 14px;
 
             &:focus-visible {
                 outline: none;
-                border: 1px solid #212121;
+                border: 1px solid var(--main);
                 padding: 5px 12px;
             }
         }

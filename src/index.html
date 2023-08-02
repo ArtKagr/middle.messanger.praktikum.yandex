@@ -1,7 +1,8 @@
 <!doctype html>
-<html lang="en">
+<html lang="ru">
   <head>
     <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0б viewport-fit=cover" />
     <link rel="stylesheet" type="text/css" href="style.css" />
     <title>Practicum Messenger</title>
   </head>
@@ -12,6 +13,7 @@
               '/': `<div class="layout -flex">{{>forms/auth }}</div>`,
               '/registration': `<div class="layout -flex">{{>forms/registration}}</div>`,
               '/chats': `<div class="layout">{{>chats/index}}</div>`,
+              '/edit-profile': `<div class="layout">{{>forms/edit-profile}}{{>chats/index}}</div>`,
               '/500': `<div class="layout -flex">{{>error title='500' subtitle_main='У нас проблема' subtitle_secondary='Мы знаем о проблеме и уже чиним сервис. Скоро все заработает.'}}</div>`,
           }
           document.querySelector('#root').innerHTML =
