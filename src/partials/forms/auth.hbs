@@ -1,11 +1,8 @@
-<form class="{{formClass}}">
-    <h1 class="{{auth.title.class}}">{{auth.title.value}}</h1>
-    {{#each auth.inputs as |input| }}
-        <input class="{{input.class}}" value="{{input.value}}" placeholder="{{input.placeholder}}" type="{{input.type}}">
+<form class="form" action="/chats">
+    <h1 class="form-title-auth">Авторизация</h1>
+    {{#each auth as |input| }}
+        <input class="form-input" value="{{input.value}}" placeholder="{{input.placeholder}}" type="{{input.type}}" name="{{input.name}}">
     {{/each}}
-    {{#each auth.buttons as |button| }}
-        <a class="{{button.class}}" href="{{button.href}}">
-            {{button.value}}
-        </a>
-    {{/each}}
+    <input type="submit" class="form-button" value="ВХОД">
+    <a class="form-link" href="/registration">ЕЩЁ НЕ ЗАРЕГИСТРИРОВАНЫ?</a>
 </form>

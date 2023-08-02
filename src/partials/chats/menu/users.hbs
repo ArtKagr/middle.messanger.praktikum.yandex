@@ -1,22 +1,28 @@
-<div class="{{chat.menu.users.class}}">
-    {{#each chat.menu.users.items as |user| }}
-        <div class="{{user.class}}">
-            <div class="{{user.avatar.class}}"></div>
-            <div class="{{user.content.class}}">
-                <span class="{{user.content.title.class}}">
-                    {{user.content.title.value}}
+<div class="chats-menu-settings-users">
+    {{#each chat.items as |user| }}
+        <div class="{{chatClass user.id }}">
+            {{#if user.avatar_link}}
+                <img class="user-avatar" src="{{user.avatar_link}}" alt>
+            {{else}}
+                <div class="user-avatar"></div>
+            {{/if}}
+            <div class="chats-menu-settings-user-content">
+                <span class="user-title">
+                    {{user.content.title}}
                 </span>
-                <span class="{{user.content.message.class}}">
-                    {{user.content.message.value}}
+                <span class="user-message">
+                    {{user.content.message}}
                 </span>
             </div>
-            <div class="{{user.content.data.class}}">
-                <span class="{{user.content.data.time.class}}">
-                    {{user.content.data.time.value}}
+            <div class="flex-column-wrapper">
+                <span class="user-time">
+                    {{user.content.data.time}}
                 </span>
-                <span class="{{user.content.data.message.class}}">
-                    {{user.content.data.message.value}}
-                </span>
+                {{#if user.content.data.new_messages }}
+                  <span class="user-new_message">
+                      {{user.content.data.new_messages}}
+                  </span>
+                {{/if}}
             </div>
         </div>
     {{/each}}
