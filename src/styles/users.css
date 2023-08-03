@@ -1,0 +1,51 @@
+.user {
+
+    &-avatar {
+        width: 44px;
+        height: 44px;
+        border-radius: 100px;
+        background-color: var(--light_grey);
+        margin-right: 8px;
+    }
+
+    &-title {
+        color: var(--main);
+        letter-spacing: 0.0015em;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+    }
+
+    &-message {
+        color: var(--grey);
+        font-size: 14px;
+        letter-spacing: 0.0025em;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+    }
+
+    &-time {
+        font-size: 10px;
+        font-weight: 500;
+        color: var(--grey);
+    }
+
+    &-new_message {
+        width: 6px;
+        height: 16px;
+        border-radius: 100px;
+        background-color: var(--azure);
+        font-size: 10px;
+        font-weight: 500;
+        color: var(--white);
+        line-height: 1.5;
+        padding: 2px 7px;
+        margin: 4px 0 0 6px;
+
+    }
+
+    &-settings {
+        cursor: pointer;
+    }
+}

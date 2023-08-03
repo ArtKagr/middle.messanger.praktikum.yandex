@@ -1,0 +1,41 @@
+@import 'styles/default.css';
+@import 'styles/form.css';
+@import 'styles/chats.css';
+@import 'styles/message.css';
+@import 'styles/users.css';
+@import 'styles/modal.css';
+
+@font-face {
+    font-family: Roboto-Regular;
+    src: url(src/fonts/Roboto-Regular.ttf);
+}
+
+html {
+    font-family: 'Roboto-Regular', sans-serif;
+}
+
+body {
+    margin: 0;
+}
+
+::-webkit-scrollbar {
+    width: 3px;
+    background-color: #f9f9fd;
+
+    &-thumb {
+        background-color: rgba(196, 196, 196, 0.5);
+    }
+}
+
+:root {
+    --very_gloomy: rgba(197, 202, 233, 0);
+    --main: #212121;
+    --gloomy: rgba(197, 202, 233, 0.2);
+    --dark: rgba(189, 189, 189, 0.3);
+    --grey: #757575;
+    --light_grey: rgba(196, 196, 196, 0.5);
+    --primary: #3F51B5;
+    --turquoise: rgba(0, 188, 212, 0.4);
+    --azure: #00BCD4;
+    --white: #FFF;
+}

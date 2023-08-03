@@ -1,0 +1,21 @@
+<div class="chats-field">
+    <nav class="message-header">
+        <div class="message-header-content">
+            <span class="message-header-content-title">
+                {{chat.chat_field.header.title}}
+            </span>
+            <span class="message-header-content-message">
+                {{chat.chat_field.header.message}}
+            </span>
+        </div>
+        <div class="message-header-menu">
+            {{>icons/icon-dots}}
+        </div>
+    </nav>
+    <div class="message-field">
+        <div class="message-field-attach">
+            {{>icons/icon-attach}}
+        </div>
+        <input class="message-field-input" placeholder="Написать сообщение..." value="{{chat.chat_field.message_field.value}}">
+    </div>
+</div>
