@@ -1,0 +1,36 @@
+<form class="modal">
+    <div class="modal-edit_profile">
+        <div class="modal-edit_profile-block">
+            <div class="modal-edit_profile-block-head">
+                <div class="modal-edit_profile-block-head-content">
+                    <div class="modal-edit_profile-block-head-content-icon">
+                        {{>icons/icon-arrow-back}}
+                    </div>
+                    <span class="modal-edit_profile-block-head-content-title">Настройка</span>
+                </div>
+                <div class="modal-edit_profile-block-head-icon">
+                    {{>icons/icon-close}}
+                </div>
+            </div>
+            <div class="modal-edit_profile-block-content">
+                <div class="modal-edit_profile-block-content-image">
+                    {{>icons/icon-avatar}}
+                </div>
+                <span class="modal-edit_profile-block-content-title">{{user.first_name}}</span>
+            </div>
+            <div class="modal-edit_profile-block-data">
+                {{#each forms.edit_profile as |input|}}
+                    <div class="modal-edit_profile-block-data-item">
+                        <span class="modal-edit_profile-block-data-item-title">{{input.placeholder}}</span>
+                        <input
+                             class="modal-edit_profile-block-data-item-value"
+                             value="{{input.value}}"
+                             placeholder="Введите значение"
+                             name="{{input.name}}"
+                        >
+                    </div>
+                {{/each}}
+            </div>
+        </div>
+    </div>
+</form>
