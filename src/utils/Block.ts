@@ -1,4 +1,5 @@
 import { EventBus } from "./EventBus";
+import { nanoid } from 'nanoid';
 
 export default class Block {
     static EVENTS = {
@@ -8,7 +9,7 @@ export default class Block {
         FLOW_RENDER: "flow:render"
     };
 
-    public id;
+    public id = nanoid(6);
     protected props: Record<string, unknown>;
     private eventBus: () => EventBus;
     private _element: HTMLElement | null = null;
@@ -37,19 +38,6 @@ export default class Block {
         this._createResources();
 
         this.eventBus().emit(Block.EVENTS.FLOW_RENDER);
-    }
-
-    // Переопределяется пользователем. Возвращает разметку
-    protected render(): string {
-        return ''
-    }
-
-    // Переопределяется пользователем
-    protected componentDidMount() {}
-
-    // Переопределяется пользователем
-    protected componentDidUpdate(oldProps: Record<string, unknown>, newProps: Record<string, unknown>) {
-        return oldProps && newProps
     }
 
     public getContent() {
@@ -86,7 +74,6 @@ export default class Block {
     private _registerEvents(eventBus: EventBus) {
         eventBus.on(Block.EVENTS.INIT, this.init.bind(this));
         eventBus.on(Block.EVENTS.FLOW_CDM, this._componentDidMount.bind(this));
-        // @ts-ignore
         eventBus.on(Block.EVENTS.FLOW_CDU, this._componentDidUpdate.bind(this));
         eventBus.on(Block.EVENTS.FLOW_RENDER, this._render.bind(this));
     }
@@ -100,10 +87,18 @@ export default class Block {
         this.componentDidMount();
     }
 
-    private _componentDidUpdate(oldProps: Record<string, unknown>, newProps: Record<string, unknown>) {
-        if (this.componentDidUpdate(oldProps, newProps)) {
+    // Переопределяется пользователем
+    protected componentDidMount() {}
+
+    private _componentDidUpdate() {
+        if (this.componentDidUpdate({ ...this.props }, this.props)) {
             this.eventBus().emit(Block.EVENTS.FLOW_RENDER)
         }
+    }
+
+    // Переопределяется пользователем
+    protected componentDidUpdate(oldProps: Record<string, unknown>, newProps: Record<string, unknown>) {
+        return oldProps && newProps;
     }
 
     setProps = (nextProps: Record<string, unknown>) => {
@@ -120,9 +115,44 @@ export default class Block {
     }
 
     private _render() {
-        this._element!.innerHTML = this.render();
+        const block = this.render();
+
+        this._element!.innerHTML = '';
+
+        this._element!.append(block);
 
         this._addEvents();
+    }
+
+    // Переопределяется пользователем. Возвращает разметку
+    protected render(): DocumentFragment {
+        return new DocumentFragment();
+    }
+
+    protected compile(template: (context: Record<string, unknown>) => string, context: Record<string, unknown>) {
+        const contextAndStubs = { ...context };
+
+        Object.entries(this.children).forEach(([name, component]) => {
+            contextAndStubs[name] = `<div data-id="${component.id}" />`
+        })
+
+        const html = template(contextAndStubs);
+
+        const temp = document.createElement('template');
+
+        temp.innerHTML = html;
+
+        Object.entries(this.children).forEach(([_, component]) => {
+            const stub = temp.content.querySelector(`[data-id=${component.id}]`)
+
+            if(!stub) {
+                return;
+            }
+
+            stub.replaceWith(component.getContent()!)
+        });
+
+        return temp.content;
     }
 
     private _makePropsProxy(props: Record<string, unknown>) {
