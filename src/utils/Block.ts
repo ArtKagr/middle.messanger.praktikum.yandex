@@ -1,4 +1,6 @@
-class Block {
+import { EventBus } from "./EventBus";
+
+export default class Block {
     static EVENTS = {
         INIT: "init",
         FLOW_CDM: "flow:component-did-mount",
@@ -6,64 +8,105 @@ class Block {
         FLOW_RENDER: "flow:render"
     };
 
-    private _element: Record<string, any> = {};
-    private readonly _meta: Record<string, any> = {};
-    protected eventBus = new EventBus();
-    protected props: Record<string, any>;
+    public id;
+    protected props: Record<string, unknown>;
+    private eventBus: () => EventBus;
+    private _element: HTMLElement | null = null;
+    private readonly _meta: { tagName: string, props: Record<string, unknown>};
+    private children: Record<string, Block>;
 
-    constructor(tagName: string = "div", props: Record<string, any> = {}) {
+    constructor(tagName: string = "div", propsWithChildren: Record<string, unknown> = {}) {
+        const eventBus = new EventBus();
+
+        const { props, children } = this._getChildrenAndProps(propsWithChildren);
+
         this._meta = { tagName, props };
+
+        this.children = children;
 
         this.props = this._makePropsProxy(props);
 
-        this._registerEvents(this.eventBus);
+        this.eventBus = () => eventBus;
 
-        this.eventBus.emit(Block.EVENTS.INIT);
+        this._registerEvents(eventBus);
+
+        eventBus.emit(Block.EVENTS.INIT);
     }
 
-    _registerEvents(eventBus: EventBus) {
+    protected init() {
+        this._createResources();
+
+        this.eventBus().emit(Block.EVENTS.FLOW_RENDER);
+    }
+
+    // Переопределяется пользователем. Возвращает разметку
+    protected render(): string {
+        return ''
+    }
+
+    // Переопределяется пользователем
+    protected componentDidMount() {}
+
+    // Переопределяется пользователем
+    protected componentDidUpdate(oldProps: Record<string, unknown>, newProps: Record<string, unknown>) {
+        return oldProps && newProps
+    }
+
+    public getContent() {
+        return this.element;
+    }
+
+    public dispatchComponentDidMount() {
+        this.eventBus().emit(Block.EVENTS.FLOW_CDM);
+    }
+
+    private _getChildrenAndProps(childrenAndProps: Record<string, unknown> | Record<string, Block>[]) {
+        const props: Record<string, unknown> = {};
+        const children: Record<string, Block> = {};
+
+        Object.entries(childrenAndProps).forEach(([key, value]) => {
+            if (value instanceof Block) {
+                children[key] = value;
+            } else {
+                props[key] = value;
+            }
+        })
+
+        return { props, children }
+    }
+
+    private _addEvents () {
+        const { events = {} } = this.props as { events: Record<string, () => void> };
+
+        Object.keys(events).forEach(eventName => {
+            this._element!.addEventListener(eventName, events[eventName]);
+        });
+    }
+
+    private _registerEvents(eventBus: EventBus) {
         eventBus.on(Block.EVENTS.INIT, this.init.bind(this));
         eventBus.on(Block.EVENTS.FLOW_CDM, this._componentDidMount.bind(this));
+        // @ts-ignore
         eventBus.on(Block.EVENTS.FLOW_CDU, this._componentDidUpdate.bind(this));
         eventBus.on(Block.EVENTS.FLOW_RENDER, this._render.bind(this));
     }
 
-    _createResources() {
+    private _createResources() {
         const { tagName } = this._meta;
-        this._element = this._createDocumentElement(tagName);
+        this._element = Block._createDocumentElement(tagName);
     }
 
-    init() {
-        this._createResources();
-
-        this.eventBus.emit(Block.EVENTS.FLOW_RENDER);
-    }
-
-    _componentDidMount() {
+    private _componentDidMount() {
         this.componentDidMount();
     }
 
-    componentDidMount() {}
-
-    dispatchComponentDidMount() {
-        this.eventBus.emit(Block.EVENTS.FLOW_CDM);
-    }
-
-    _componentDidUpdate(oldProps: Record<string, any>, newProps: Record<string, any>) {
-        const response = this.componentDidUpdate(oldProps, newProps);
-
-        if (!response) {
-            return;
+    private _componentDidUpdate(oldProps: Record<string, unknown>, newProps: Record<string, unknown>) {
+        if (this.componentDidUpdate(oldProps, newProps)) {
+            this.eventBus().emit(Block.EVENTS.FLOW_RENDER)
         }
-
-        this._render();
     }
 
-    componentDidUpdate(oldProps: Record<string, any>, newProps: Record<string, any>) {
-        return { oldProps, newProps }
-    }
-
-    setProps = (nextProps: any) => {
+    setProps = (nextProps: Record<string, unknown>) => {
         if (!nextProps) {
             return;
         }
@@ -76,29 +119,25 @@ class Block {
         return this._element;
     }
 
-    _render() {
-        this._element.innerHTML = this.render();
+    private _render() {
+        this._element!.innerHTML = this.render();
+
+        this._addEvents();
     }
 
-    render() {
-        return ''
-    }
-
-    getContent() {
-        return this.element;
-    }
-
-    _makePropsProxy(props: Record<string, any>) {
+    private _makePropsProxy(props: Record<string, unknown>) {
         const self = this;
 
         return new Proxy(props, {
-            get(target: any, prop: any) {
+            get(target: Record<string, unknown>, prop: string) {
                 const value = target[prop];
                 return typeof value === "function" ? value.bind(target) : value;
             },
-            set(target: any, prop: any, value) {
+            set(target: Record<string, unknown>, prop: string, value) {
+                const oldTarget = { ...target }
+
                 target[prop] = value;
-                self.eventBus.emit(Block.EVENTS.FLOW_CDU, {...target}, target);
+                self.eventBus().emit(Block.EVENTS.FLOW_CDU, { oldTarget, target });
                 return true;
             },
             deleteProperty() {
@@ -107,7 +146,7 @@ class Block {
         });
     }
 
-    _createDocumentElement(tagName: any) {
+    private static _createDocumentElement(tagName: any) {
         return document.createElement(tagName);
     }
 }

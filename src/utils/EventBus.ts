@@ -1,11 +1,7 @@
-class EventBus {
-    private readonly listeners: Record<string, any[]>;
+export class EventBus {
+    private readonly listeners: Record<string, Array<() => void>> = {};
 
-    constructor() {
-        this.listeners = {};
-    }
-
-    on(event: string, callback: any) {
+    on(event: string, callback: () => void) {
         if (!this.listeners[event]) {
             this.listeners[event] = [];
         }
@@ -13,23 +9,31 @@ class EventBus {
         this.listeners[event].push(callback);
     }
 
-    off(event: any, callback: any) {
+    off(event: string, callback: () => void) {
         if (!this.listeners[event]) {
             throw new Error(`Нет события: ${event}`);
         }
 
         this.listeners[event] = this.listeners[event].filter(
-            (listener: any) => listener !== callback
+            (listener: () => void) => listener !== callback
         );
     }
 
-    emit(event: any, ...args: any[]) {
+    emit(event: string, args?: unknown) {
         if (!this.listeners[event]) {
             throw new Error(`Нет события: ${event}`);
         }
 
-        this.listeners[event].forEach((listener: any) => {
-            listener(...args);
+        this.listeners[event].forEach((listener: (args: unknown) => void) => {
+            listener(args);
         })
     }
 }
+
+// const eventBus = new EventBus();
+//
+// eventBus.on('event', (data) => {
+//     console.log(data)
+// })
+//
+// eventBus.emit('event', { property: 'value' })

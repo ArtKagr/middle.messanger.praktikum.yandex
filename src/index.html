@@ -8,17 +8,17 @@
   </head>
   <body>
       <main id="root"></main>
-      <script>
-          const pages = {
-              '/': `<div class="layout -flex">{{>forms/auth }}</div>`,
-              '/registration': `<div class="layout -flex">{{>forms/registration}}</div>`,
-              '/chats': `<div class="layout">{{>chats/index}}</div>`,
-              '/edit-profile': `<div class="layout">{{>forms/edit-profile}}{{>chats/index}}</div>`,
-              '/500': `<div class="layout -flex">{{>error title='500' subtitle_main='У нас проблема' subtitle_secondary='Мы знаем о проблеме и уже чиним сервис. Скоро все заработает.'}}</div>`,
-          }
-          document.querySelector('#root').innerHTML =
-              pages[location.pathname] ||
-              `<div class="layout -flex">{{>error title='404' subtitle_main='Такой страницы нет' subtitle_secondary='Возможно она была удалена или перенесена на другой адрес.'}}</div>`
-      </script>
+<!--      <script>-->
+<!--          const pages = {-->
+<!--              '/': `<div class="layout -flex">{{>forms/auth }}</div>`,-->
+<!--              '/registration': `<div class="layout -flex">{{>forms/registration}}</div>`,-->
+<!--              '/chats': `<div class="layout">{{>chats/index}}</div>`,-->
+<!--              '/edit-profile': `<div class="layout">{{>forms/edit-profile}}{{>chats/index}}</div>`,-->
+<!--              '/500': `<div class="layout -flex">{{>error title='500' subtitle_main='У нас проблема' subtitle_secondary='Мы знаем о проблеме и уже чиним сервис. Скоро все заработает.'}}</div>`,-->
+<!--          }-->
+<!--          document.querySelector('#root').innerHTML =-->
+<!--              pages[location.pathname] ||-->
+<!--              `<div class="layout -flex">{{>error title='404' subtitle_main='Такой страницы нет' subtitle_secondary='Возможно она была удалена или перенесена на другой адрес.'}}</div>`-->
+<!--      </script>-->
   </body>
 </html>
