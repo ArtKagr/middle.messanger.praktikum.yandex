@@ -8,7 +8,7 @@ export default defineConfig({
         outDir: resolve(__dirname, 'dist')
     },
     plugins: [handlebars({
-        partialDirectory: resolve(__dirname, 'src/partials'),
+        partialDirectory: resolve(__dirname, 'src/components'),
         helpers: {
             chatClass: (chatId) => `chats-menu-settings-user ${chatId === 7 ? '-active' : ''}`
         },
@@ -18,20 +18,6 @@ export default defineConfig({
                 second_name: 'Иванов'
             },
             forms: {
-                auth: [
-                    { value: 'ivan@example.com', placeholder: 'E-mail', type: 'email', name: 'login' },
-                    { value: '1234567890', placeholder: 'Пароль', type: 'password', name: 'password' }
-                ],
-                registration: [
-                    { value: 'ivan@example.com', placeholder: 'E-mail', type: 'email', name: 'email' },
-                    { value: 'ivanivanov', placeholder: 'Логин', type: 'text', name: 'login' },
-                    { value: 'Иван', placeholder: 'Имя', type: 'text', name: 'first_name' },
-                    { value: 'Иванов', placeholder: 'Фамилия', type: 'text', name: 'second_name' },
-                    { value: 'Вано', placeholder: 'Отображаемое имя', type: 'text', name: 'display_name' },
-                    { value: '+79099673030', placeholder: 'Телефон', type: 'text', name: 'phone' },
-                    { value: '1234567890', placeholder: 'Пароль', type: 'password', name: 'password' },
-                    { value: '1234567890', placeholder: 'Повторите пароль', type: 'password', name: 'repeat_password' }
-                ],
                 edit_profile: [
                     { value: 'ivan@example.com', placeholder: 'Почта', type: 'email', name: 'email' },
                     { value: 'ivanivanov', placeholder: 'Логин', type: 'text', name: 'login' },
@@ -218,15 +204,7 @@ export default defineConfig({
                         }
                     }
 
-                ],
-                chat_field: {
-                    header: {
-                        title: 'Двойник',
-                        message: 'был(а) 35 минут назад'
-                    },
-                    messages: {},
-                    message_field: null
-                }
+                ]
             }
         }
     })]

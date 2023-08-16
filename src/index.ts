@@ -1,14 +1,17 @@
-import { HomePage } from './pages/home';
-// import { Button } from "./components/button";
+import { AuthForm, RegForm } from './components/form';
+import { NotFoundPage, ServerErrorPage } from './components/errorPage';
+
+const pages: { [key: string]: HTMLElement } = {
+    '/': AuthForm,
+    '/registration': RegForm,
+    '/chats': RegForm,
+    '/edit-profile': RegForm,
+    '/500': ServerErrorPage
+};
+
+const currentPage: HTMLElement = pages[window.location.pathname] || NotFoundPage;
 
 window.addEventListener('DOMContentLoaded', () => {
-    const root = document.querySelector('#app')!;
-
-    const homePage = new HomePage({ title: 'Home page' });
-
-    root.append(homePage.getContent()!);
-
-    setTimeout(() => {
-        homePage.setProps({ title: 'Update title' })
-    }, 1000)
+    const root = document.querySelector('#root')!;
+    root.append(currentPage);
 })

@@ -1,5 +1,9 @@
 import { EventBus } from "./EventBus";
 import { nanoid } from 'nanoid';
+import Handlebars from 'handlebars';
+
+type ObjType = { [key: string]: any }
+type ClassNames = string | string[] | undefined
 
 export default class Block {
     static EVENTS = {
@@ -9,19 +13,22 @@ export default class Block {
         FLOW_RENDER: "flow:render"
     };
 
-    public id = nanoid(6);
-    protected props: Record<string, unknown>;
+    public id: string;
+    protected props: ObjType;
+    private children: ObjType;
     private eventBus: () => EventBus;
-    private _element: HTMLElement | null = null;
-    private readonly _meta: { tagName: string, props: Record<string, unknown>};
-    private children: Record<string, Block>;
+    // @ts-ignore
+    private _element: HTMLElement;
+    private readonly _meta: { tagName: string, props: ObjType, classNames?: ClassNames };
 
-    constructor(tagName: string = "div", propsWithChildren: Record<string, unknown> = {}) {
+    constructor(tagName: string = "div", propsWithChildren: ObjType = {}, classNames?: ClassNames) {
         const eventBus = new EventBus();
 
         const { props, children } = this._getChildrenAndProps(propsWithChildren);
 
-        this._meta = { tagName, props };
+        this._meta = { tagName, props, classNames };
+
+        this.id = nanoid(6);
 
         this.children = children;
 
@@ -48,9 +55,9 @@ export default class Block {
         this.eventBus().emit(Block.EVENTS.FLOW_CDM);
     }
 
-    private _getChildrenAndProps(childrenAndProps: Record<string, unknown> | Record<string, Block>[]) {
-        const props: Record<string, unknown> = {};
-        const children: Record<string, Block> = {};
+    private _getChildrenAndProps(childrenAndProps: ObjType) {
+        const props: ObjType = {};
+        const children: ObjType = {};
 
         Object.entries(childrenAndProps).forEach(([key, value]) => {
             if (value instanceof Block) {
@@ -64,7 +71,7 @@ export default class Block {
     }
 
     private _addEvents () {
-        const { events = {} } = this.props as { events: Record<string, () => void> };
+        const { events = {} } = this.props as { events: ObjType };
 
         Object.keys(events).forEach(eventName => {
             this._element!.addEventListener(eventName, events[eventName]);
@@ -79,19 +86,21 @@ export default class Block {
     }
 
     private _createResources() {
-        const { tagName } = this._meta;
-        this._element = Block._createDocumentElement(tagName);
+        const { tagName, classNames } = this._meta;
+        this._element = this._createDocumentElement(tagName, classNames);
+    }
+
+    // Переопределяется пользователем
+    protected componentDidMount() {
+        return true;
     }
 
     private _componentDidMount() {
         this.componentDidMount();
     }
 
-    // Переопределяется пользователем
-    protected componentDidMount() {}
-
-    private _componentDidUpdate() {
-        if (this.componentDidUpdate({ ...this.props }, this.props)) {
+    private _componentDidUpdate(oldProps: ObjType, newProps: ObjType) {
+        if (this.componentDidUpdate(oldProps, newProps)) {
             this.eventBus().emit(Block.EVENTS.FLOW_RENDER)
         }
     }
@@ -129,18 +138,20 @@ export default class Block {
         return new DocumentFragment();
     }
 
-    protected compile(template: (context: Record<string, unknown>) => string, context: Record<string, unknown>) {
+    protected compile(template: string, context: ObjType) {
         const contextAndStubs = { ...context };
 
-        Object.entries(this.children).forEach(([name, component]) => {
-            contextAndStubs[name] = `<div data-id="${component.id}" />`
+        Object.entries(this.children).forEach(([name, element]) => {
+            if (Array.isArray(element)) {
+                contextAndStubs[name] = element.map(item => `<div data-id="${item.id}"></div>>`)
+            } else {
+                contextAndStubs[name] = `<div data-id="${element.id}"></div>`;
+            }
         })
-
-        const html = template(contextAndStubs);
 
         const temp = document.createElement('template');
 
-        temp.innerHTML = html;
+        temp.innerHTML = Handlebars.compile(template)(contextAndStubs);
 
         Object.entries(this.children).forEach(([_, component]) => {
             const stub = temp.content.querySelector(`[data-id=${component.id}]`)
@@ -149,21 +160,22 @@ export default class Block {
                 return;
             }
 
+            component.getContent()?.append(...Array.from(stub.childNodes));
             stub.replaceWith(component.getContent()!)
         });
 
         return temp.content;
     }
 
-    private _makePropsProxy(props: Record<string, unknown>) {
+    _makePropsProxy(props: ObjType) {
         const self = this;
 
         return new Proxy(props, {
-            get(target: Record<string, unknown>, prop: string) {
+            get(target: ObjType, prop: string) {
                 const value = target[prop];
                 return typeof value === "function" ? value.bind(target) : value;
             },
-            set(target: Record<string, unknown>, prop: string, value) {
+            set(target: ObjType, prop: string, value) {
                 const oldTarget = { ...target }
 
                 target[prop] = value;
@@ -176,7 +188,19 @@ export default class Block {
         });
     }
 
-    private static _createDocumentElement(tagName: any) {
-        return document.createElement(tagName);
+    _createDocumentElement(tagName: any, classNames: ClassNames) {
+        const element = document.createElement(tagName);
+
+        if (classNames) {
+            if (Array.isArray(classNames)) {
+                classNames.forEach((className) => {
+                    element.classList.add(className)
+                })
+            } else {
+                element.classList.add(classNames)
+            }
+        }
+
+        return element
     }
 }
