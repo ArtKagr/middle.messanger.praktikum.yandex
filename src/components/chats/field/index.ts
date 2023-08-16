@@ -15,7 +15,7 @@ const messageField = {
 
 class ChatMessageField extends Block {
     constructor(props: MessageFieldProps) {
-        super('div', props, 'chat-field');
+        super('div', props);
     }
 
     render() {
