@@ -1,4 +1,4 @@
-export const template = `
+export default `
     <div class="chats-menu">
         <div class="chats-menu-settings">
             <div class="chats-menu-settings-user_settings">
@@ -25,33 +25,7 @@ export const template = `
             <input class="chats-input-search" placeholder="Поиск" type="text" value="{{chat.menu.search}}">
         </div>
         <div class="chats-menu-settings-users">
-            {{#each users as |user| }}
-                <div class="chats-menu-settings-user {{activeClass}}">
-                    {{#if user.avatar_link}}
-                        <img class="user-avatar" src="{{user.avatar_link}}" alt>
-                    {{else}}
-                        <div class="user-avatar"></div>
-                    {{/if}}
-                    <div class="chats-menu-settings-user-content">
-                        <span class="user-title">
-                            {{user.content.title}}
-                        </span>
-                        <span class="user-message">
-                            {{user.content.message}}
-                        </span>
-                    </div>
-                    <div class="flex-column-wrapper">
-                        <span class="user-time">
-                            {{user.content.data.time}}
-                        </span>
-                        {{#if user.content.data.new_messages }}
-                          <span class="user-new_message">
-                              {{user.content.data.new_messages}}
-                          </span>
-                        {{/if}}
-                    </div>
-                </div>
-            {{/each}}
+           {{{users}}}
         </div>
     </div>
 `

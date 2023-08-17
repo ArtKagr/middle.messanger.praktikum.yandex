@@ -2,9 +2,6 @@ import { EventBus } from "./EventBus";
 import { nanoid } from 'nanoid';
 import Handlebars from 'handlebars';
 
-type ObjType = { [key: string]: any }
-type ClassNames = string | string[] | undefined
-
 export default class Block {
     static EVENTS = {
         INIT: "init",

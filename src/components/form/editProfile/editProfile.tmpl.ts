@@ -1,4 +1,4 @@
-export const template = `
+export default `
     <form class="modal">
         <div class="modal-edit_profile">
             <div class="modal-edit_profile-block">

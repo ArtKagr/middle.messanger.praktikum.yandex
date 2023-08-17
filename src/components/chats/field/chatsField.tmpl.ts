@@ -1,4 +1,4 @@
-export const template = `
+export default `
     <div class="chats-field">
         <nav class="message-header">
             <div class="message-header-content">

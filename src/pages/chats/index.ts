@@ -1,12 +1,7 @@
 import ChatsMenu from '../../components/chats/menu';
 import ChatsField from '../../components/chats/field'
 import Block from '../../utils/Block';
-import { template } from './chats.tmpl';
-
-type Chats = {
-    chatsMenu: string;
-    chatsField: string;
-};
+import template from './chats.tmpl';
 
 const chats = {
     chatsMenu: ChatsMenu.innerHTML,

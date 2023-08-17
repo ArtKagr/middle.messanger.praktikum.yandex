@@ -1,4 +1,4 @@
-export const template = `
+export default `
     <form class="form" action="/chats">
         <h1 class="form-title-error">
             {{title}}

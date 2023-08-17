@@ -1,22 +1,5 @@
 import Block from '../../utils/Block';
-import { template } from './form.tmpl';
-
-type FormProps = {
-    action: string;
-    title: string;
-    inputs: FormInput[];
-    button: string;
-    link: string;
-    linkHref: string;
-}
-
-type FormInput = {
-    value: string;
-    placeholder: string;
-    type: string;
-    name: string;
-    events?: { [key: string]: () => void }
-}
+import template from './form.tmpl';
 
 const authForm: FormProps = {
     action: '/chats',
@@ -26,20 +9,18 @@ const authForm: FormProps = {
             value: 'ivan@example.com',
             placeholder: 'E-mail',
             type: 'email',
-            name: 'login',
-            events: { click: () => { console.log('kek') }}
+            name: 'login'
         },
         {
             value: '1234567890',
             placeholder: 'Пароль',
             type: 'password',
-            name: 'password',
-            events: { click: () => { console.log('kek') }}
+            name: 'password'
         }
     ],
     button: 'ВХОД',
     link: 'ЕЩЁ НЕ ЗАРЕГИСТРИРОВАНЫ?',
-    linkHref: '/registration',
+    linkHref: '/registration'
 }
 
 const regForm: FormProps = {

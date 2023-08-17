@@ -1,11 +1,5 @@
 import Block from '../../../utils/Block';
-import { template } from './chatsField.tmpl';
-
-type MessageFieldProps = {
-    title: string | null;
-    message: string | null;
-    messageValue: string | null;
-}
+import template from './chatsField.tmpl';
 
 const messageField = {
     title: 'Двойник',

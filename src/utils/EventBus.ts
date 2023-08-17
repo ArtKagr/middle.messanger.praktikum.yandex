@@ -1,5 +1,3 @@
-type Callback = (event: any) => void;
-
 export class EventBus {
     private readonly listeners: Record<string, Callback[]> = {};
 
@@ -27,11 +25,3 @@ export class EventBus {
         this.listeners[event].forEach(listener => listener(args))
     }
 }
-
-// const eventBus = new EventBus();
-//
-// eventBus.on('event', (data) => {
-//     console.log(data)
-// })
-//
-// eventBus.emit('event', { property: 'value' })

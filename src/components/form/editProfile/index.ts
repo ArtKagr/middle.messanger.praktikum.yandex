@@ -1,17 +1,5 @@
 import Block from '../../../utils/Block';
-import { template } from './editProfile.tmpl';
-
-type FormEditProfileInputProps = {
-    value: string;
-    placeholder: string;
-    type: string;
-    name: string;
-}
-
-type FormEditProfileProps = {
-    firstName: string;
-    items: FormEditProfileInputProps[]
-}
+import template from './editProfile.tmpl';
 
 const items = [
     { value: 'ivan@example.com', placeholder: 'Почта', type: 'email', name: 'email' },

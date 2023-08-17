@@ -1,12 +1,5 @@
 import Block from '../../utils/Block';
-import { template } from './error.tmpl';
-
-type ErrorPageProps = {
-    title: string;
-    subtitleMain: string;
-    subtitleSecondary: string;
-    buttonText: string;
-}
+import template from './error.tmpl';
 
 const notFoundPage: ErrorPageProps = {
     title: '404',

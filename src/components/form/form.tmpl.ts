@@ -1,4 +1,4 @@
-export const template = `
+export default `
     <form class="form" action="{{action}}">
         <h1 class="form-title-auth">{{title}}</h1>
             {{#each inputs as |input| }}
