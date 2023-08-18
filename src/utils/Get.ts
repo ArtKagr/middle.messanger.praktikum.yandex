@@ -1,4 +1,4 @@
-export function arrayTemplate(items: Record<string, unknown>[], Block: any): string {
+function arrayTemplate(items: Record<string, unknown>[], Block: any): string {
     let tmpl: string[] = []
 
     items.forEach((item) => {
@@ -7,4 +7,8 @@ export function arrayTemplate(items: Record<string, unknown>[], Block: any): str
     })
 
     return tmpl.reduce((acc, value) => acc.concat(value), '')
+}
+
+export {
+    arrayTemplate
 }

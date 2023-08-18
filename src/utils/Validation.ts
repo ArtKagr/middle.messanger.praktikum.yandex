@@ -45,15 +45,6 @@ function checkRules (inputName: string, data: string): string {
 
 function getFieldData (item: HTMLInputElement): Record<string, any> {
 
-    function getErrorField (field: HTMLElement) {
-        return field.querySelector('.field_error') as HTMLDivElement;
-    }
-
-    function setErrorField (field: HTMLDivElement, error: string): HTMLDivElement {
-        field.textContent = error
-        return field
-    }
-
     const errorMessage = checkRules(item.name, item.value);
     const errorField = getErrorField(item.parentElement as HTMLElement);
     const errorTextField = setErrorField(errorField, errorMessage);
@@ -61,16 +52,25 @@ function getFieldData (item: HTMLInputElement): Record<string, any> {
     return { errorMessage, errorField, errorTextField }
 }
 
-export function checkField (item: HTMLInputElement): boolean {
+function getErrorField (field: HTMLElement) {
+    return field.querySelector('.field_error') as HTMLDivElement;
+}
+
+function setErrorField (field: HTMLDivElement, error: string): HTMLDivElement {
+    field.textContent = error
+    return field
+}
+
+function checkField (item: HTMLInputElement): boolean {
     const { errorMessage } = getFieldData(item);
     return !errorMessage;
 }
-
-export function focusField (event: InputEvent): void {
+//
+function focusField (event: InputEvent): void {
     checkField(event.target as HTMLInputElement);
 }
 
-export function submitForm (e: Event): void {
+function submitForm (e: Event): void {
     e.preventDefault();
 
     const children: NodeListOf<HTMLInputElement> = document.querySelectorAll('input');
@@ -84,16 +84,29 @@ export function submitForm (e: Event): void {
         }
 
         if (Object.keys(payload).length === children.length) {
-            console.warn('submitForm', payload)
+            console.log('submitForm', payload)
         }
     })
 }
 
-export function submitMessage (e: Event): void {
+function submitMessage (e: Event): void {
     e.preventDefault();
 
-    // const item = document.querySelector('input[type=text]') as HTMLInputElement;
-    // const payload: Record<string, string> = {};
+    const item = document.querySelector('input[type=text]') as HTMLInputElement;
+    const payload: Record<string, string> = {};
+
+    if (item) {
+        let errorField = getErrorField(item);
+
+        if (item.value === '') {
+            errorField = setErrorField(errorField, errors.emptyMessage);
+        } else {
+            errorField = setErrorField(errorField, '');
+
+            payload[item.name] = item.value;
+            console.log('submitMessage', payload);
+        }
+    }
 }
 
 enum errors {
@@ -113,4 +126,11 @@ const rules = {
     name: /^[А-ЯA-Z]{1}[а-яa-z-]{1,40}$/,
     email: /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/,
     phone: /^(\s*)?(\+)?([- _():=+]?\d[- _():=+]?){8,20}(\s*)?$/
+}
+
+export {
+    checkField,
+    focusField,
+    submitForm,
+    submitMessage
 }

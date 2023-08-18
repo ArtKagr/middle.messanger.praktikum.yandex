@@ -1,6 +1,6 @@
 import Block from '../../../utils/Block';
 import template from './chatUser.tmpl';
-import { arrayTemplate } from '../../../utils/get';
+import { arrayTemplate } from '../../../utils/Get';
 
 const users: UserProps[] = [
     {

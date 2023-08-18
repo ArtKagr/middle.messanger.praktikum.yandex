@@ -1,4 +1,4 @@
-export class EventBus {
+class EventBus {
     private readonly listeners: Record<string, Callback[]> = {};
 
     on(event: string, callback: (...args: any) => void) {
@@ -24,4 +24,8 @@ export class EventBus {
 
         this.listeners[event].forEach(listener => listener(args))
     }
+}
+
+export {
+    EventBus
 }
