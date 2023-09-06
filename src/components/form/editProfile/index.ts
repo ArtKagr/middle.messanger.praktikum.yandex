@@ -17,7 +17,11 @@ const editProfile = {
 
 class FormEditProfile extends Block {
     constructor(props: FormEditProfileProps) {
-        super('div', props, 'layout');
+        super('div', props);
+    }
+
+    init () {
+        this.getContent().setAttribute('class', 'layout');
     }
 
     render () {

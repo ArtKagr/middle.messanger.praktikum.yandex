@@ -12,18 +12,18 @@ export default class Block {
 
     public id: string;
     protected props: ObjType;
-    private children: ObjType;
+    public children: ObjType;
     private eventBus: () => EventBus;
     // @ts-ignore
     private _element: HTMLElement;
-    private readonly _meta: { tagName: string, props: ObjType, classNames?: ClassNames };
+    private readonly _meta: { tagName: string, props: ObjType };
 
-    constructor(tagName: string = "div", propsWithChildren: ObjType = {}, classNames?: ClassNames) {
+    constructor(tagName: string = "div", propsWithChildren: ObjType = {}) {
         const eventBus = new EventBus();
 
         const { props, children } = this._getChildrenAndProps(propsWithChildren);
 
-        this._meta = { tagName, props, classNames };
+        this._meta = { tagName, props };
 
         this.id = nanoid(6);
 
@@ -38,11 +38,17 @@ export default class Block {
         eventBus.emit(Block.EVENTS.INIT);
     }
 
-    protected init() {
+
+
+    protected _init() {
         this._createResources();
+
+        this.init();
 
         this.eventBus().emit(Block.EVENTS.FLOW_RENDER);
     }
+
+    protected init(): void {}
 
     public getContent() {
         return this.element;
@@ -76,15 +82,15 @@ export default class Block {
     }
 
     private _registerEvents(eventBus: EventBus) {
-        eventBus.on(Block.EVENTS.INIT, this.init.bind(this));
+        eventBus.on(Block.EVENTS.INIT, this._init.bind(this));
         eventBus.on(Block.EVENTS.FLOW_CDM, this._componentDidMount.bind(this));
         eventBus.on(Block.EVENTS.FLOW_CDU, this._componentDidUpdate.bind(this));
         eventBus.on(Block.EVENTS.FLOW_RENDER, this._render.bind(this));
     }
 
     private _createResources() {
-        const { tagName, classNames } = this._meta;
-        this._element = this._createDocumentElement(tagName, classNames);
+        const { tagName } = this._meta;
+        this._element = this._createDocumentElement(tagName);
     }
 
     // Переопределяется пользователем
@@ -140,7 +146,7 @@ export default class Block {
 
         Object.entries(this.children).forEach(([name, element]) => {
             if (Array.isArray(element)) {
-                contextAndStubs[name] = element.map(item => `<div data-id="${item.id}"></div>>`)
+                contextAndStubs[name] = element.map(item => `<div data-id="${item.id}"></div>`)
             } else {
                 contextAndStubs[name] = `<div data-id="${element.id}"></div>`;
             }
@@ -150,8 +156,9 @@ export default class Block {
 
         temp.innerHTML = Handlebars.compile(template)(contextAndStubs);
 
+
         Object.entries(this.children).forEach(([_, component]) => {
-            const stub = temp.content.querySelector(`[data-id=${component.id}]`)
+            const stub = temp.content.querySelector(`[data-id="${component.id}"]`)
 
             if(!stub) {
                 return;
@@ -185,19 +192,7 @@ export default class Block {
         });
     }
 
-    _createDocumentElement(tagName: any, classNames: ClassNames) {
-        const element = document.createElement(tagName);
-
-        if (classNames) {
-            if (Array.isArray(classNames)) {
-                classNames.forEach((className) => {
-                    element.classList.add(className)
-                })
-            } else {
-                element.classList.add(classNames)
-            }
-        }
-
-        return element
+    _createDocumentElement(tagName: any) {
+        return document.createElement(tagName);
     }
 }

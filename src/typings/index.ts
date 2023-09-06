@@ -1,15 +1,25 @@
 type ObjType = { [key: string]: any }
 
-type ClassNames = string | string[] | undefined
-
 type Callback = (event: any) => void;
+
+interface ButtonProps {
+    title: string,
+    events?: { [key: string]: (...args: never) => void }
+}
+
+type ChatsMenuProps = {
+    avatar_link: string;
+    title: string;
+    message: string;
+    events?: { [key: string]: (...args: never) => void }
+}
 
 type UserProps = {
     id: number;
     avatar_link: string | null;
     content: UserPropsContent;
     activeClass?: string;
-    events?: { [key: string]: () => void };
+    events?: { [key: string]: (...args: never) => void };
 }
 
 type UserPropsContent = {
@@ -29,20 +39,21 @@ type MessageFieldProps = {
 
 type FormProps = {
     action: string;
+    name: string;
     title: string;
     inputs: FormInput[];
-    button: string;
+    button: ButtonProps;
     link: string;
     linkHref: string;
-    events?: { [key: string]: () => void };
 }
 
 type FormInput = {
-    value: string;
+    value: string | null;
     placeholder: string;
-    type: string;
     name: string;
-    events?: { [key: string]: () => void }
+    type: string;
+    error?: string;
+    events?: { [key: string]: (...args: never) => void }
 }
 
 type FormEditProfileInputProps = {

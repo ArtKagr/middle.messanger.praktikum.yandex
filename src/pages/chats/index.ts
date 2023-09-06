@@ -10,7 +10,11 @@ const chats = {
 
 class ChatsPage extends Block {
     constructor(props: Chats) {
-        super('div', props, 'layout');
+        super('div', props);
+    }
+
+    init () {
+        this.getContent().setAttribute('class', 'layout');
     }
 
     render () {

@@ -4,7 +4,7 @@ import template from './error.tmpl';
 const notFoundPage: ErrorPageProps = {
     title: '404',
     subtitleMain: 'Такой страницы нет',
-    subtitleSecondary: 'Возможно она быда удалена или перенесена на другой адрес',
+    subtitleSecondary: 'Возможно она была удалена или перенесена на другой адрес',
     buttonText: 'НАЗАД К ЧАТАМ'
 }
 
@@ -17,7 +17,11 @@ const serverErrorPage: ErrorPageProps = {
 
 class ErrorPage extends Block {
     constructor(props: ErrorPageProps) {
-        super('form', props, ['layout', '-flex']);
+        super('form', props);
+    }
+
+    init () {
+        this.getContent()?.setAttribute('class', 'layout -flex')
     }
 
     render() {

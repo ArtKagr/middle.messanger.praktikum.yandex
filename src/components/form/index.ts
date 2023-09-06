@@ -1,56 +1,141 @@
 import Block from '../../utils/Block';
+import { Button } from '../button';
+import { Input } from '../input';
 import template from './form.tmpl';
+import { focusInput, blurInput, submitForm } from '../../utils/Validation'
 
-const authForm: FormProps = {
+export const authForm: FormProps = {
     action: '/chats',
+    name: 'auth',
     title: 'Авторизация',
     inputs: [
         {
-            value: 'ivan@example.com',
+            value: null,
             placeholder: 'E-mail',
-            type: 'email',
-            name: 'login'
+            name: 'email',
+            type: 'text',
+            error: 'Введите почту в соответствии с форматом stasbasov@yandex.ru',
+            events: { focusin: focusInput, focusout: blurInput }
         },
         {
-            value: '1234567890',
+            value: null,
             placeholder: 'Пароль',
+            name: 'password',
             type: 'password',
-            name: 'password'
+            error: 'Пароль латинскими буквами: минимум 1 строчная и заглавная, а также цифра. 6-30 символов.',
+            events: { focusin: focusInput, focusout: blurInput }
         }
     ],
-    button: 'ВХОД',
+    button: {
+        title: 'ВХОД',
+        events: {
+            click: submitForm
+        }
+    },
     link: 'ЕЩЁ НЕ ЗАРЕГИСТРИРОВАНЫ?',
     linkHref: '/registration'
 }
 
-const regForm: FormProps = {
+export const regForm: FormProps = {
     action: '/',
+    name: 'registration',
     title: 'Регистрация',
     inputs: [
-        { value: 'ivan@example.com', placeholder: 'E-mail', type: 'email', name: 'email' },
-        { value: 'ivanivanov', placeholder: 'Логин', type: 'text', name: 'login' },
-        { value: 'Иван', placeholder: 'Имя', type: 'text', name: 'first_name' },
-        { value: 'Иванов', placeholder: 'Фамилия', type: 'text', name: 'second_name' },
-        { value: 'Вано', placeholder: 'Отображаемое имя', type: 'text', name: 'display_name' },
-        { value: '+79099673030', placeholder: 'Телефон', type: 'text', name: 'phone' },
-        { value: '1234567890', placeholder: 'Пароль', type: 'password', name: 'password' },
-        { value: '1234567890', placeholder: 'Повторите пароль', type: 'password', name: 'repeat_password' }
+        {
+            value: null,
+            placeholder: 'E-mail',
+            name: 'email',
+            type: 'text',
+            error: 'Введите почту в соответствии с форматом stasbasov@yandex.ru',
+            events: { focusin: focusInput, focusout: blurInput }
+        },
+        {
+            value: null,
+            placeholder: 'Логин',
+            name: 'login',
+            type: 'text',
+            error: 'Логин латинскими буквами и цифрами. 3-30 символов.',
+            events: { focusin: focusInput, focusout: blurInput }
+        },
+        {
+            value: null,
+            placeholder: 'Имя',
+            name: 'first_name',
+            type: 'text',
+            error: 'Имя латиницей или кириллицей, с заглавной буквы. 1-40 символов.',
+            events: { focusin: focusInput, focusout: blurInput }
+        },
+        {
+            value: null,
+            placeholder: 'Фамилия',
+            name: 'second_name',
+            type: 'text',
+            error: 'Фамилия латиницей или кириллицей, с заглавной буквы. 1-40 символов.',
+            events: { focusin: focusInput, focusout: blurInput }
+        },
+        {
+            value: null,
+            placeholder: 'Отображаемое имя',
+            name: 'display_name',
+            type: 'text',
+            error: 'Отображаемое имя латиницей или кириллицей, с заглавной буквы. 1-40 символов.',
+            events: { focusin: focusInput, focusout: blurInput }
+        },
+        {
+            value: null,
+            placeholder: 'Телефон',
+            name: 'phone',
+            type: 'text',
+            error: 'Номер телефона может содержать от 8 до 20 символов',
+            events: { focusin: focusInput, focusout: blurInput }
+        },
+        {
+            value: null,
+            placeholder: 'Пароль',
+            name: 'password',
+            type: 'password',
+            error: 'Пароль латинскими буквами: минимум 1 строчная и заглавная, а также цифра. 6-30 символов.',
+            events: { focusin: focusInput, focusout: blurInput }
+        },
+        {
+            value: null,
+            placeholder: 'Повторите пароль',
+            name: 'repeat_password',
+            type: 'password',
+            error: 'Пароль латинскими буквами: минимум 1 строчная и заглавная, а также цифра. 6-30 символов.',
+            events: { focusin: focusInput, focusout: blurInput }
+        },
     ],
-    button: 'ЗАРЕГИСТРИРОВАТЬСЯ',
+    button: {
+        title: 'ЗАРЕГИСТРИРОВАТЬСЯ',
+        events: {
+            click: submitForm
+        }
+    },
     link: 'ВОЙТИ',
     linkHref: '/'
 }
 
 class Form extends Block {
     constructor(props: FormProps) {
-        super('div', props, ['layout', '-flex']);
+        super('div', props);
+    }
+
+    init () {
+        this.getContent()?.setAttribute('class', 'layout -flex')
     }
 
     render() {
+        this.props.inputs.forEach((input: FormInput) => {
+            this.children[input.name] = new Input(input);
+        })
+
+        this.children.button = new Button(this.props.button);
+
         return this.compile(template, this.props);
     }
 }
-
+//
 export const AuthForm = new Form(authForm).getContent();
 export const RegForm = new Form(regForm).getContent();
 

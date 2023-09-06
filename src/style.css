@@ -39,3 +39,7 @@ body {
     --azure: #00BCD4;
     --white: #FFF;
 }
+
+p {
+    margin: 0;
+}

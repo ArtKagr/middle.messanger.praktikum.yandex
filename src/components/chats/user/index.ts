@@ -1,6 +1,7 @@
 import Block from '../../../utils/Block';
 import template from './chatUser.tmpl';
 import { arrayTemplate } from '../../../utils/Get';
+import { testFunc } from '../../../utils/Validation';
 
 const users: UserProps[] = [
     {
@@ -15,9 +16,7 @@ const users: UserProps[] = [
             }
         },
         events: {
-            click: () => {
-                console.log('chat is clicked');
-            }
+            click: testFunc
         }
     },
     {
