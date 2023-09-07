@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "vite",
     "prebuild": "tsc --noEmit",
-    "build": "npm run prebuild && vite build",
+    "build": "vite build",
     "preview": "vite preview",
     "start": "node server.js",
     "lint": "eslint \"**/*.ts\" && stylelint \"**/*.css\""
