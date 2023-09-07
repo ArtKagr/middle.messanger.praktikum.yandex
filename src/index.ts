@@ -1,12 +1,12 @@
 import { AuthForm, RegForm } from './components/form';
 import { NotFoundPage, ServerErrorPage } from './pages/error';
-import ChatsPage from './pages/chats';
+import { ChatsPage } from './pages/chats';
 import EditProfile from './components/form/editProfile';
 
 const pages: { [key: string]: HTMLElement } = {
     '/': AuthForm,
     '/registration': RegForm,
-    '/chats': ChatsPage,
+    '/chats': new ChatsPage({}).getContent(),
     '/edit-profile': EditProfile,
     '/500': ServerErrorPage
 };

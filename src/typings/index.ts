@@ -31,10 +31,14 @@ type UserPropsContent = {
     }
 }
 
-type MessageFieldProps = {
+type ChatsFieldProps = {
     title: string | null;
     message: string | null;
-    messageValue: string | null;
+}
+
+type InputMessageProps = {
+    value: string | null;
+    events?: { [key: string]: (...args: never) => void };
 }
 
 type FormProps = {
@@ -68,10 +72,7 @@ type FormEditProfileProps = {
     items: FormEditProfileInputProps[]
 }
 
-type Chats = {
-    chatsMenu: string;
-    chatsField: string;
-}
+type Chats = {}
 
 type ErrorPageProps = {
     title: string;
@@ -79,3 +80,8 @@ type ErrorPageProps = {
     subtitleSecondary: string;
     buttonText: string;
 }
+
+type SendButtonProps = {
+    events?: { [key: string]: (...args: never) => void };
+}
+

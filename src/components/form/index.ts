@@ -14,16 +14,14 @@ export const authForm: FormProps = {
             placeholder: 'E-mail',
             name: 'email',
             type: 'text',
-            error: 'Введите почту в соответствии с форматом stasbasov@yandex.ru',
-            events: { focusin: focusInput, focusout: blurInput }
+            error: 'Введите почту в соответствии с форматом stasbasov@yandex.ru'
         },
         {
             value: null,
             placeholder: 'Пароль',
             name: 'password',
             type: 'password',
-            error: 'Пароль латинскими буквами: минимум 1 строчная и заглавная, а также цифра. 6-30 символов.',
-            events: { focusin: focusInput, focusout: blurInput }
+            error: 'Пароль латинскими буквами: минимум 1 строчная и заглавная, а также цифра. 6-30 символов.'
         }
     ],
     button: {
@@ -46,64 +44,56 @@ export const regForm: FormProps = {
             placeholder: 'E-mail',
             name: 'email',
             type: 'text',
-            error: 'Введите почту в соответствии с форматом stasbasov@yandex.ru',
-            events: { focusin: focusInput, focusout: blurInput }
+            error: 'Введите почту в соответствии с форматом stasbasov@yandex.ru'
         },
         {
             value: null,
             placeholder: 'Логин',
             name: 'login',
             type: 'text',
-            error: 'Логин латинскими буквами и цифрами. 3-30 символов.',
-            events: { focusin: focusInput, focusout: blurInput }
+            error: 'Логин латинскими буквами и цифрами. 3-30 символов.'
         },
         {
             value: null,
             placeholder: 'Имя',
             name: 'first_name',
             type: 'text',
-            error: 'Имя латиницей или кириллицей, с заглавной буквы. 1-40 символов.',
-            events: { focusin: focusInput, focusout: blurInput }
+            error: 'Имя латиницей или кириллицей, с заглавной буквы. 1-40 символов.'
         },
         {
             value: null,
             placeholder: 'Фамилия',
             name: 'second_name',
             type: 'text',
-            error: 'Фамилия латиницей или кириллицей, с заглавной буквы. 1-40 символов.',
-            events: { focusin: focusInput, focusout: blurInput }
+            error: 'Фамилия латиницей или кириллицей, с заглавной буквы. 1-40 символов.'
         },
         {
             value: null,
             placeholder: 'Отображаемое имя',
             name: 'display_name',
             type: 'text',
-            error: 'Отображаемое имя латиницей или кириллицей, с заглавной буквы. 1-40 символов.',
-            events: { focusin: focusInput, focusout: blurInput }
+            error: 'Отображаемое имя латиницей или кириллицей, с заглавной буквы. 1-40 символов.'
         },
         {
             value: null,
             placeholder: 'Телефон',
             name: 'phone',
             type: 'text',
-            error: 'Номер телефона может содержать от 8 до 20 символов',
-            events: { focusin: focusInput, focusout: blurInput }
+            error: 'Номер телефона может содержать от 8 до 20 символов'
         },
         {
             value: null,
             placeholder: 'Пароль',
             name: 'password',
             type: 'password',
-            error: 'Пароль латинскими буквами: минимум 1 строчная и заглавная, а также цифра. 6-30 символов.',
-            events: { focusin: focusInput, focusout: blurInput }
+            error: 'Пароль латинскими буквами: минимум 1 строчная и заглавная, а также цифра. 6-30 символов.'
         },
         {
             value: null,
             placeholder: 'Повторите пароль',
             name: 'repeat_password',
             type: 'password',
-            error: 'Пароль латинскими буквами: минимум 1 строчная и заглавная, а также цифра. 6-30 символов.',
-            events: { focusin: focusInput, focusout: blurInput }
+            error: 'Пароль латинскими буквами: минимум 1 строчная и заглавная, а также цифра. 6-30 символов.'
         },
     ],
     button: {
@@ -127,6 +117,7 @@ class Form extends Block {
 
     render() {
         this.props.inputs.forEach((input: FormInput) => {
+            input.events = { focusin: focusInput, focusout: blurInput }
             this.children[input.name] = new Input(input);
         })
 

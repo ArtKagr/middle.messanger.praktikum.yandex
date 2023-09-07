@@ -53,10 +53,10 @@
 
         .error_text {
             font-size: 12px;
-            color: firebrick;
-            padding-top: 4px;
-            text-align: center;
+            color: var(--danger);
+            padding: 4px 12px 0;
             width: 343px;
+            line-height: 16px;
 
             display: none;
 

@@ -20,6 +20,27 @@ function blurInput (event: InputEvent): void {
     checkInput(input);
 }
 
+function focusMessage (): void {
+    const errorMessage: HTMLInputElement | null = document.querySelector('.message-field_container-error')
+
+    errorMessage?.setAttribute('class', 'message-field_container-error')
+}
+
+function enterMessage (): void {
+    const errorMessage: HTMLInputElement | null = document.querySelector('.message-field_container-error')
+    const inputField: HTMLInputElement | null = document.querySelector('.message-field-input input')
+
+    const inputValue: string | undefined = inputField?.value
+
+    // @ts-ignore
+    if (inputValue === '') {
+        errorMessage?.setAttribute('class', 'message-field_container-error -visible')
+    } else {
+        console.log('message', inputValue)
+    }
+
+}
+
 function checkInput (input: HTMLInputElement): boolean {
     // @ts-ignore
     const isError = !rules[input.name].test(input.value)
@@ -62,5 +83,7 @@ export {
     focusInput,
     blurInput,
     submitForm,
+    focusMessage,
+    enterMessage,
     testFunc
 }

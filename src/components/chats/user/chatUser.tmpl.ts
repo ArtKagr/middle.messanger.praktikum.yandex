@@ -1,4 +1,4 @@
-export default `<div class="chats-menu-settings-user {{activeClass}}">
+export default `<div class="chats-menu-settings-user">
                     {{#if avatar_link}}
                         <img class="user-avatar" src="{{avatar_link}}" alt>
                     {{else}}

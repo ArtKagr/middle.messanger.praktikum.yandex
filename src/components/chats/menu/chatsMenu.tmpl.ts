@@ -25,7 +25,21 @@ export default `
             <input class="chats-input-search" placeholder="Поиск" type="text" value="{{chat.menu.search}}">
         </div>
         <div class="chats-menu-settings-users">
-           {{{users}}}
+            {{{0}}}
+            {{{1}}}
+            {{{2}}}
+            {{{3}}}
+            {{{4}}}
+            {{{5}}}
+            {{{6}}}
+            {{{7}}}
+            {{{8}}}
+            {{{9}}}
+            {{{10}}}
+            {{{11}}}
+            {{{12}}}
+            {{{13}}}
+            {{{14}}}
         </div>
     </div>
 `
