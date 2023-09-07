@@ -22,7 +22,7 @@ export default `
             </div>
         </nav>
         <div class="message-field_container">
-            <span class="message-field_container-error">Поле не должно быть пустым</span>
+            <span class="message-field_container-error">Сообщение не должно быть пустым</span>
             <div class="message-field">
                 <div class="message-field-attach">
                     <svg width="22" height="24" viewBox="0 0 22 24" fill="none" xmlns="http://www.w3.org/2000/svg">

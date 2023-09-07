@@ -7,8 +7,16 @@ export class Button extends Block {
     }
 
     init () {
-        this.getContent()?.setAttribute('class', 'form-button');
-        this.getContent()?.setAttribute('type', 'submit');
+        if (this.props.formButton) {
+            this.getContent()?.setAttribute('type', 'submit');
+        }
+
+        if (this.props.disabled) {
+            this.getContent()?.setAttribute('disabled', '');
+            this.getContent()?.setAttribute('class', 'form-button -disabled');
+        } else {
+            this.getContent()?.setAttribute('class', 'form-button');
+        }
     }
 
     render () {

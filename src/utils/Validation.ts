@@ -9,15 +9,26 @@ const rules = {
     repeat_password: /^(?=.*[a-z])(?=.*[A-Z]){1,}(?=.*[0-9]){1,}(?=.*[^\s]).{6,30}/
 }
 
-function focusInput (event: InputEvent): void {
+function focusFormInput (event: InputEvent): void {
     const input = event.target as HTMLInputElement;
     input.nextElementSibling?.setAttribute('class', 'error_text')
 
 }
 
-function blurInput (event: InputEvent): void {
+function blurFormInput (event: InputEvent): void {
     const input = event.target as HTMLInputElement;
-    checkInput(input);
+    checkFormInput(input);
+}
+
+function focusEditProfileInput (event: InputEvent): void {
+    const input = event.target as HTMLInputElement;
+    const parent = input.parentElement
+    parent?.nextElementSibling?.setAttribute('class', 'modal-edit_profile-block-data-error')
+}
+
+function blurEditProfileInput (event: InputEvent): void {
+    const input = event.target as HTMLInputElement;
+    checkEditProfileInput(input);
 }
 
 function focusMessage (): void {
@@ -41,7 +52,7 @@ function enterMessage (): void {
 
 }
 
-function checkInput (input: HTMLInputElement): boolean {
+function checkFormInput (input: HTMLInputElement): boolean {
     // @ts-ignore
     const isError = !rules[input.name].test(input.value)
 
@@ -52,18 +63,52 @@ function checkInput (input: HTMLInputElement): boolean {
     return isError
 }
 
-function submitForm (e: Event): void {
+function checkEditProfileInput (input: HTMLInputElement) {
+    // @ts-ignore
+    const isError = !rules[input.name].test(input.value)
+
+    if (isError) {
+        const parent = input.parentElement
+        parent?.nextElementSibling?.setAttribute('class', 'modal-edit_profile-block-data-error -visible')
+    }
+
+    return isError
+}
+
+function changeProfileData (e: Event): void {
     e.preventDefault();
 
-    const children: NodeListOf<HTMLInputElement> = document.querySelectorAll('.form-input');
+    const editButton = e.target as HTMLButtonElement;
+    const saveButton = editButton.nextElementSibling;
 
+    const children: NodeListOf<HTMLInputElement> = document.querySelectorAll('.modal-edit_profile-block-data-item-value');
+
+    children.forEach((input: HTMLInputElement) => {
+        input.removeAttribute('disabled');
+    })
+
+    editButton.setAttribute('disabled', '');
+    saveButton?.removeAttribute('disabled');
+    saveButton?.setAttribute('class', 'form-button');
+}
+
+function saveProfileData (e: Event) {
+    submitForm(e, '.modal-edit_profile-block-data-item-value', 'edit-profile')
+}
+
+function submitForm (e: Event, className: string = '.form-input', source: string = 'form'): void {
+    e.preventDefault();
+
+    const children: NodeListOf<HTMLInputElement> = document.querySelectorAll(className);
     const errors: boolean[] = [];
-
     const values: Record<string, string> = {};
 
-    children.forEach((input) => {
-        errors.push(checkInput(input));
-
+    children.forEach((input: HTMLInputElement) => {
+        if (source === 'form') {
+            errors.push(checkFormInput(input));
+        } else {
+            errors.push(checkEditProfileInput(input));
+        }
         values[input.name] = input.value;
     });
 
@@ -80,10 +125,14 @@ function testFunc (e: Event): void {
 }
 
 export {
-    focusInput,
-    blurInput,
+    focusFormInput,
+    blurFormInput,
     submitForm,
     focusMessage,
     enterMessage,
-    testFunc
+    testFunc,
+    changeProfileData,
+    saveProfileData,
+    focusEditProfileInput,
+    blurEditProfileInput
 }

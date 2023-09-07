@@ -2,7 +2,7 @@ import Block from '../../utils/Block';
 import { Button } from '../button';
 import { Input } from '../input';
 import template from './form.tmpl';
-import { focusInput, blurInput, submitForm } from '../../utils/Validation'
+import { focusFormInput, blurFormInput, submitForm } from '../../utils/Validation'
 
 export const authForm: FormProps = {
     action: '/chats',
@@ -26,6 +26,7 @@ export const authForm: FormProps = {
     ],
     button: {
         title: 'ВХОД',
+        formButton: true,
         events: {
             click: submitForm
         }
@@ -98,6 +99,7 @@ export const regForm: FormProps = {
     ],
     button: {
         title: 'ЗАРЕГИСТРИРОВАТЬСЯ',
+        formButton: true,
         events: {
             click: submitForm
         }
@@ -117,7 +119,7 @@ class Form extends Block {
 
     render() {
         this.props.inputs.forEach((input: FormInput) => {
-            input.events = { focusin: focusInput, focusout: blurInput }
+            input.events = { focusin: focusFormInput, focusout: blurFormInput }
             this.children[input.name] = new Input(input);
         })
 

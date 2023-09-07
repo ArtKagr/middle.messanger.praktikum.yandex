@@ -1,5 +1,5 @@
 export default `
-    <form class="modal">
+    <div class="modal">
         <div class="modal-edit_profile">
             <div class="modal-edit_profile-block">
                 <div class="modal-edit_profile-block-head">
@@ -34,19 +34,18 @@ export default `
                     <span class="modal-edit_profile-block-content-title">{{firstName}}</span>
                 </div>
                 <div class="modal-edit_profile-block-data">
-                    {{#each items as |input|}}
-                        <div class="modal-edit_profile-block-data-item">
-                            <span class="modal-edit_profile-block-data-item-title">{{input.placeholder}}</span>
-                            <input
-                                 class="modal-edit_profile-block-data-item-value"
-                                 value="{{input.value}}"
-                                 placeholder="Введите значение"
-                                 name="{{input.name}}"
-                            >
-                        </div>
-                    {{/each}}
+                    {{{email}}}
+                    {{{login}}}
+                    {{{first_name}}}
+                    {{{second_name}}}
+                    {{{display_name}}}
+                    {{{phone}}}
+                    <div class="modal-edit_profile-block-data-buttons">
+                        {{{editButton}}}
+                        {{{saveButton}}}
+                    </div>
                 </div>
             </div>
         </div>
-    </form>
+    </div>
 `

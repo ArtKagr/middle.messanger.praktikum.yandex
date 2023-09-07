@@ -4,6 +4,8 @@ type Callback = (event: any) => void;
 
 interface ButtonProps {
     title: string,
+    disabled?: boolean;
+    formButton: boolean;
     events?: { [key: string]: (...args: never) => void }
 }
 
@@ -60,16 +62,9 @@ type FormInput = {
     events?: { [key: string]: (...args: never) => void }
 }
 
-type FormEditProfileInputProps = {
-    value: string;
-    placeholder: string;
-    type: string;
-    name: string;
-}
-
 type FormEditProfileProps = {
-    firstName: string;
-    items: FormEditProfileInputProps[]
+    title: string;
+    className: string;
 }
 
 type Chats = {}
