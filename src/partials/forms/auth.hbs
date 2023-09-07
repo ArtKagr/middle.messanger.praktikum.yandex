@@ -1,8 +1,0 @@
-<form class="form" action="/chats">
-    <h1 class="form-title-auth">Авторизация</h1>
-    {{#each forms.auth as |input| }}
-        <input class="form-input" value="{{input.value}}" placeholder="{{input.placeholder}}" type="{{input.type}}" name="{{input.name}}">
-    {{/each}}
-    <input type="submit" class="form-button" value="ВХОД">
-    <a class="form-link" href="/registration">ЕЩЁ НЕ ЗАРЕГИСТРИРОВАНЫ?</a>
-</form>

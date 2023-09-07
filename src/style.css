@@ -34,8 +34,13 @@ body {
     --dark: rgba(189, 189, 189, 0.3);
     --grey: #757575;
     --light_grey: rgba(196, 196, 196, 0.5);
+    --danger: #B00020;
     --primary: #3F51B5;
     --turquoise: rgba(0, 188, 212, 0.4);
     --azure: #00BCD4;
     --white: #FFF;
+}
+
+p {
+    margin: 0;
 }
