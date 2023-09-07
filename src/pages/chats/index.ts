@@ -1,5 +1,6 @@
 import { ChatsMenu } from '../../components/chats/menu';
 import { ChatMessageField } from '../../components/chats/field'
+import { FormEditProfile } from '../../components/form/editProfile';
 import Block from '../../utils/Block';
 import template from './chats.tmpl';
 
@@ -22,6 +23,11 @@ export class ChatsPage extends Block {
         this.children.chatsField = new ChatMessageField({
             title: 'Двойник',
             message: 'был(а) 35 минут назад',
+        })
+
+        this.children.editProfile = new FormEditProfile({
+            title: 'Иван',
+            className: 'modal'
         })
 
         return this.compile(template, this.props)

@@ -6,6 +6,15 @@
     &.-flex {
         display: flex;
     }
+
+    &.-modal {
+        position: absolute;
+        display: none;
+
+        &.-visible {
+            display: block;
+        }
+    }
 }
 
 .flex-column-wrapper {
