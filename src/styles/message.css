@@ -1,5 +1,4 @@
 .message {
-
     &-header {
         display: flex;
         align-items: center;
@@ -75,7 +74,7 @@
             padding: 0 60px 8px;
             display: none;
 
-            &.-visible {
+            &.visible {
                 display: inline;
             }
         }

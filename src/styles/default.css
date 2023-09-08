@@ -3,7 +3,7 @@
     width: 100%;
     height: 100vh;
 
-    &.-flex {
+    &.flex {
         display: flex;
     }
 
@@ -11,7 +11,7 @@
         position: absolute;
         display: none;
 
-        &.-visible {
+        &.visible {
             display: flex;
             width: 100%;
             height: 100vh;

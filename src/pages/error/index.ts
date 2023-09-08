@@ -21,7 +21,7 @@ class ErrorPage extends Block {
     }
 
     init () {
-        this.getContent()?.setAttribute('class', 'layout -flex')
+        this.getContent()?.setAttribute('class', 'layout flex')
     }
 
     render() {

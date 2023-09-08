@@ -109,7 +109,7 @@
                     line-height: 16px;
                     display: none;
 
-                    &.-visible {
+                    &.visible {
                         display: inline;
                     }
                 }

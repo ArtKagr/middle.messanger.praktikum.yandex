@@ -11,7 +11,7 @@ const rules = {
 
 function focusFormInput (event: InputEvent): void {
     const input = event.target as HTMLInputElement;
-    input.nextElementSibling?.setAttribute('class', 'error_text')
+    input.nextElementSibling?.setAttribute('class', 'error-text')
 
 }
 
@@ -33,7 +33,7 @@ function blurEditProfileInput (event: InputEvent): void {
 
 function showEditProfileModal (): void {
     const modal: HTMLDivElement = document.querySelector('.layout-modal')
-    modal?.setAttribute('class', 'layout-modal -visible')
+    modal?.setAttribute('class', 'layout-modal visible')
 }
 
 function hideEditProfileModal (): void {
@@ -52,7 +52,7 @@ function enterMessage (): void {
     const inputValue: string | undefined = inputField?.value
 
     if (inputValue === '') {
-        errorMessage?.setAttribute('class', 'message-field_container-error -visible')
+        errorMessage?.setAttribute('class', 'message-field_container-error visible')
     } else {
         console.log('message', inputValue)
     }
@@ -63,7 +63,7 @@ function checkFormInput (input: HTMLInputElement): boolean {
     const isError = !rules[input.name].test(input.value)
 
     if (isError) {
-        input.nextElementSibling?.setAttribute('class', 'error_text -visible')
+        input.nextElementSibling?.setAttribute('class', 'error-text visible')
     }
 
     return isError
@@ -74,7 +74,7 @@ function checkEditProfileInput (input: HTMLInputElement) {
 
     if (isError) {
         const parent = input.parentElement
-        parent?.nextElementSibling?.setAttribute('class', 'modal-edit_profile-block-data-error -visible')
+        parent?.nextElementSibling?.setAttribute('class', 'modal-edit_profile-block-data-error visible')
     }
 
     return isError
