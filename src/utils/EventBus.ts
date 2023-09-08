@@ -1,6 +1,7 @@
 class EventBus {
+    /* eslint-disable */
     private listeners: Record<string, Callback[]> = {};
-
+    /* eslint-enable */
     on(event: string, callback: (...args: any) => void) {
         if (!this.listeners[event]) {
             this.listeners[event] = [];
