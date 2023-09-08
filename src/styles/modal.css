@@ -5,7 +5,7 @@
     justify-content: center;
     width: 100%;
     height: 100vh;
-    background: rgba(0, 0, 0, 0.2);
+    background: #00000033;
 
     &-edit_profile {
         width: 515px;
@@ -16,14 +16,14 @@
             width: 100%;
             background: var(--white);
             border-radius: 5px;
-            box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.15), 0 1px 10px 0 rgba(0, 0, 0, 0.10), 0 4px 5px 0 rgba(0, 0, 0, 0.10);
+            box-shadow: 0 2px 4px 0 #00000026, 0 1px 10px 0 #0000001a, 0 4px 5px 0 #0000001a;
             height: calc(100vh - 66px);
 
             &-head {
                 display: flex;
                 align-items: center;
                 justify-content: flex-end;
-                padding: 32px 24px 24px 24px;
+                padding: 32px 24px 24px;
 
                 &-content {
                     display: flex;
