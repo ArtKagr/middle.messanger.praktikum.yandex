@@ -6,12 +6,12 @@
 @import url("styles/modal.css");
 
 @font-face {
-    font-family: "Roboto-Regular";
-    src: url(src/fonts/Roboto-Regular.ttf);
+    font-family: Roboto-Regular;
+    src: url("src/fonts/Roboto-Regular.ttf");
 }
 
 html {
-    font-family: 'Roboto-Regular', sans-serif;
+    font-family: Roboto-Regular, sans-serif;
 }
 
 body {
@@ -23,20 +23,20 @@ body {
     background-color: #f9f9fd;
 
     &-thumb {
-        background-color: rgba(196, 196, 196, 50%);
+        background-color: #c4c4c480;
     }
 }
 
 :root {
-    --very-gloomy: rgba(197, 202, 233, 0%);
+    --very-gloomy: #c5cae900;
     --main: #212121;
-    --gloomy: rgba(197, 202, 233, 20%);
-    --dark: rgba(189, 189, 189, 0.3);
+    --gloomy: #c5cae933;
+    --dark: #bdbdbd4d;
     --grey: #757575;
-    --light-grey: rgba(196, 196, 196, 50%);
+    --light-grey: #c4c4c480;
     --danger: #b00020;
     --primary: #3f51b5;
-    --turquoise: rgba(0, 188, 212, 50%);
+    --turquoise: #00bcd480;
     --azure: #00bcd4;
     --white: #fff;
 }
