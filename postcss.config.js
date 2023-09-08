@@ -1,3 +1,4 @@
+/* eslint-disable global-require */
 module.exports = {
   plugins: [
     require('autoprefixer'),
@@ -9,3 +10,4 @@ module.exports = {
     '@typescript-eslint/ban-ts-ignore': 'on',
   },
 };
+/* eslint-enable global-require */
