@@ -9,7 +9,7 @@ app.use(express.static('./dist'));
 const routes = ['/', '/registration', '/chats', '/500', '*'];
 
 routes.forEach((route) => {
-    app.get(route, (_: any, res: any) => {
+    app.get(route, (_, res) => {
        res.sendFile(__dirname + '/dist/index.html');
     });
 });
