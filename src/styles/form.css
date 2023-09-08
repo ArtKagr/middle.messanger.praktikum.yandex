@@ -97,7 +97,7 @@
         letter-spacing: 0.0125em;
 
         &:disabled {
-            background-color: var(--light_grey);
+            background-color: var(--light-grey);
         }
     }
 

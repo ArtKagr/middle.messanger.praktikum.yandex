@@ -78,7 +78,7 @@
                     display: flex;
                     align-items: center;
                     justify-content: space-between;
-                    border-bottom: 1px solid var(--light_grey);
+                    border-bottom: 1px solid var(--light-grey);
 
                     &-title {
                         color: var(--main);
@@ -95,7 +95,7 @@
                         }
 
                         &:disabled {
-                            color: var(--light_grey);
+                            color: var(--light-grey);
                             background-color: var(--white);
                         }
                     }

@@ -49,7 +49,7 @@
             input {
                 width: 100%;
                 border: none;
-                background-color: var(--very_gloomy);
+                background-color: var(--very-gloomy);
                 font-size: 14px;
                 color: var(--grey);
 
