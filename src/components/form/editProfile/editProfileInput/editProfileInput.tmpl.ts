@@ -10,4 +10,4 @@ export default `
         >
     </div>
     <span class="modal-edit_profile-block-data-error">{{error}}</span>
-`
+`;

@@ -1,5 +1,5 @@
 class EventBus {
-    private readonly listeners: Record<string, Callback[]> = {};
+    private listeners: Record<string, Callback[]> = {};
 
     on(event: string, callback: (...args: any) => void) {
         if (!this.listeners[event]) {

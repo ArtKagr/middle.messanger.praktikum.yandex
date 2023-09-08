@@ -4,4 +4,4 @@ export default `
         {{{chatsField}}}
         {{{editProfile}}}
     </div>
-`
+`;
