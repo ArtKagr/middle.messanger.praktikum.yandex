@@ -6,8 +6,5 @@ module.exports = {
     require('postcss-import'),
     require('postcss-css-variables'),
   ],
-  rules: {
-    '@typescript-eslint/ban-ts-ignore': 'on',
-  },
 };
 /* eslint-enable global-require */
