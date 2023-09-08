@@ -100,7 +100,7 @@ export const users: UserProps[] = [
                 new_messages: 9
             }
         },
-        activeClass: '-active'
+        activeClass: 'active'
     },
     {
         id: 8,
