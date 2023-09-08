@@ -14,7 +14,6 @@ export default class Block {
     protected props: ObjType;
     public children: ObjType;
     private eventBus: () => EventBus;
-    // @ts-ignore
     private _element: HTMLElement;
     private readonly _meta: { tagName: string, props: ObjType };
 
