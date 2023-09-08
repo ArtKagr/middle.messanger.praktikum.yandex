@@ -31,19 +31,26 @@ function blurEditProfileInput (event: InputEvent): void {
     checkEditProfileInput(input);
 }
 
+function showEditProfileModal (): void {
+    const modal: HTMLDivElement = document.querySelector('.layout-modal')
+    modal?.setAttribute('class', 'layout-modal -visible')
+}
+
+function hideEditProfileModal (): void {
+    const modal: HTMLDivElement = document.querySelector('.layout-modal')
+    modal?.setAttribute('class', 'layout-modal')
+}
+
 function focusMessage (): void {
     const errorMessage: HTMLInputElement | null = document.querySelector('.message-field_container-error')
-
     errorMessage?.setAttribute('class', 'message-field_container-error')
 }
 
 function enterMessage (): void {
     const errorMessage: HTMLInputElement | null = document.querySelector('.message-field_container-error')
     const inputField: HTMLInputElement | null = document.querySelector('.message-field-input input')
-
     const inputValue: string | undefined = inputField?.value
 
-    // @ts-ignore
     if (inputValue === '') {
         errorMessage?.setAttribute('class', 'message-field_container-error -visible')
     } else {
@@ -53,7 +60,6 @@ function enterMessage (): void {
 }
 
 function checkFormInput (input: HTMLInputElement): boolean {
-    // @ts-ignore
     const isError = !rules[input.name].test(input.value)
 
     if (isError) {
@@ -64,7 +70,6 @@ function checkFormInput (input: HTMLInputElement): boolean {
 }
 
 function checkEditProfileInput (input: HTMLInputElement) {
-    // @ts-ignore
     const isError = !rules[input.name].test(input.value)
 
     if (isError) {
@@ -80,7 +85,6 @@ function changeProfileData (e: Event): void {
 
     const editButton = e.target as HTMLButtonElement;
     const saveButton = editButton.nextElementSibling;
-
     const children: NodeListOf<HTMLInputElement> = document.querySelectorAll('.modal-edit_profile-block-data-item-value');
 
     children.forEach((input: HTMLInputElement) => {
@@ -120,7 +124,6 @@ function submitForm (e: Event, className: string = '.form-input', source: string
 
 function testFunc (e: Event): void {
     e.preventDefault();
-
     console.warn('testFunc')
 }
 
@@ -134,5 +137,7 @@ export {
     changeProfileData,
     saveProfileData,
     focusEditProfileInput,
-    blurEditProfileInput
+    blurEditProfileInput,
+    showEditProfileModal,
+    hideEditProfileModal
 }

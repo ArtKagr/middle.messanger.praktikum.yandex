@@ -1,8 +1,15 @@
 import Block from '../../../utils/Block';
 import template from './editProfile.tmpl';
 import { Button } from '../../button';
-import { changeProfileData, focusEditProfileInput, blurEditProfileInput, saveProfileData } from '../../../utils/Validation';
-import { FormEditProfileInput } from "./editProfileInput";
+import { FormEditProfileInput } from './editProfileInput';
+import { EditProfileCloseButton } from './closeButton';
+import {
+    changeProfileData,
+    focusEditProfileInput,
+    blurEditProfileInput,
+    saveProfileData,
+    hideEditProfileModal
+} from '../../../utils/Validation';
 
 let items: FormInput[] = [
     {
@@ -58,11 +65,17 @@ export class FormEditProfile extends Block {
         if (this.props.className === '') {
             this.getContent().setAttribute('class', 'layout');
         } else {
-            this.getContent().setAttribute('class', `layout -${this.props.className}`);
+            this.getContent().setAttribute('class', `layout-${this.props.className}`);
         }
     }
 
     render () {
+        this.children.closeButton = new EditProfileCloseButton({
+            events: {
+                click: hideEditProfileModal
+            }
+        })
+
         items.forEach((input) => {
             input.events = { focusin: focusEditProfileInput, focusout: blurEditProfileInput };
             this.children[input.name] = new FormEditProfileInput(input);

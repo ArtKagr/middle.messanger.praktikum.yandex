@@ -2,18 +2,20 @@ type ObjType = { [key: string]: any }
 
 type Callback = (event: any) => void;
 
+type Event = { [key: string]: (...args: never[]) => void };
+
 interface ButtonProps {
     title: string,
     disabled?: boolean;
     formButton: boolean;
-    events?: { [key: string]: (...args: never) => void }
+    events?: Event;
 }
 
 type ChatsMenuProps = {
     avatar_link: string;
     title: string;
     message: string;
-    events?: { [key: string]: (...args: never) => void }
+    events?: Event;
 }
 
 type UserProps = {
@@ -21,7 +23,7 @@ type UserProps = {
     avatar_link: string | null;
     content: UserPropsContent;
     activeClass?: string;
-    events?: { [key: string]: (...args: never) => void };
+    events?: Event;
 }
 
 type UserPropsContent = {
@@ -40,7 +42,7 @@ type ChatsFieldProps = {
 
 type InputMessageProps = {
     value: string | null;
-    events?: { [key: string]: (...args: never) => void };
+    events?: Event;
 }
 
 type FormProps = {
@@ -59,7 +61,7 @@ type FormInput = {
     name: string;
     type: string;
     error?: string;
-    events?: { [key: string]: (...args: never) => void }
+    events?: Event;
 }
 
 type FormEditProfileProps = {
@@ -76,7 +78,7 @@ type ErrorPageProps = {
     buttonText: string;
 }
 
-type SendButtonProps = {
-    events?: { [key: string]: (...args: never) => void };
+type EventButtonProps = {
+    events: Event;
 }
 

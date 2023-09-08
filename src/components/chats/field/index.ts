@@ -14,7 +14,7 @@ const inputMessage: FormInput = {
     events: { focusin: focusMessage }
 }
 
-const sendButton: SendButtonProps = {
+const sendButton: EventButtonProps = {
     events: {
         click: enterMessage
     }
