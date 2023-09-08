@@ -1,5 +1,5 @@
-import Block from '../../utils/Block'
-import template from './button.tmpl'
+import Block from '../../utils/Block';
+import template from './button.tmpl';
 
 export class Button extends Block {
     constructor(props: ButtonProps) {
