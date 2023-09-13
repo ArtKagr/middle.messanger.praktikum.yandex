@@ -1,4 +1,4 @@
-const rules = {
+const rules: Record<string, RegExp> = {
     email: /^([A-Za-z0-9_])+([A-Za-z0-9_])+\.([A-Za-z]{2,4})$/,
     login: /^(?!^\d+)[a-zA-Z0-9-_]{3,30}$/,
     first_name: /^[А-ЯA-Z]{1}[а-яa-z-ё]{1,40}$/,
@@ -60,7 +60,7 @@ function enterMessage (): void {
 }
 
 function checkFormInput (input: HTMLInputElement): boolean {
-    const rule = !rules[input.name as string] as unknown
+    const rule = !rules[input.name as string] as RegExp
     const isError = rule.test(input.value)
 
     if (isError) {
@@ -71,7 +71,7 @@ function checkFormInput (input: HTMLInputElement): boolean {
 }
 
 function checkEditProfileInput (input: HTMLInputElement) {
-    const rule = !rules[input.name as string] as unknown
+    const rule = !rules[input.name] as RegExp
     const isError = rule.test(input.value)
 
     if (isError) {
