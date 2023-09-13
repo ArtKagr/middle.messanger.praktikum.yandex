@@ -5,6 +5,7 @@ module.exports = {
     plugins: ['@typescript-eslint'],
     rules: {
         'no-unused-vars': 0,
+        'no-var-requires': 0,
         'max-len': [1, 10000],
         'max-params': [2, 3]
     },
