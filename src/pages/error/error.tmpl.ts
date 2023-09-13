@@ -11,4 +11,4 @@ export default `
         </span>
         <input class="form-button form-not_found" type="submit" value="{{buttonText}}">
     </form>
-`
+`;

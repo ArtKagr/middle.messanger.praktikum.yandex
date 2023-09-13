@@ -1,12 +1,11 @@
 .chats {
-
     display: flex;
 
     &-menu {
         display: flex;
         flex-direction: column;
         background-color: var(--gloomy);
-        box-shadow: 1px 0 1px rgba(0, 0, 0, 0.05);
+        box-shadow: 1px 0 1px #0000000d;
         width: 310px;
         height: 100vh;
 
@@ -31,7 +30,7 @@
                     background-color: var(--turquoise);
                 }
 
-                &.-active {
+                &.active {
                     background-color: var(--turquoise);
                 }
 
@@ -60,7 +59,6 @@
     }
 
     &-input {
-
         &-search {
             width: 256px;
             padding: 6px 12px;

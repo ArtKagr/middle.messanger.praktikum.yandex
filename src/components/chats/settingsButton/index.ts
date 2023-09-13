@@ -1,14 +1,14 @@
 import Block from '../../../utils/Block';
-import template from './sendButton.tmpl';
+import template from './settingsButton.tmpl';
 import { EventButtonProps } from '../../../typings';
 
-export class ChatsSendButton extends Block {
+export class ChatsSettingsButton extends Block {
     constructor(props: EventButtonProps) {
         super('div', props);
     }
 
     init () {
-        this.getContent()?.setAttribute('class', 'message-field-send')
+        this.getContent()?.setAttribute('class', 'user-settings')
     }
 
     render () {

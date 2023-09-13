@@ -1,7 +1,9 @@
 import Block from '../../../utils/Block';
 import template from './chatsMenu.tmpl';
-import { ChatsUser } from "../user";
-import { testFunc } from '../../../utils/Validation';
+import { ChatsUser } from '../user';
+import { testFunc, showEditProfileModal } from '../../../utils/Validation';
+import { ChatsSettingsButton } from '../settingsButton';
+import { ChatsMenuProps, UserProps } from '../../../typings';
 
 export const users: UserProps[] = [
     {
@@ -99,7 +101,7 @@ export const users: UserProps[] = [
                 new_messages: 9
             }
         },
-        activeClass: '-active'
+        activeClass: 'active'
     },
     {
         id: 8,
@@ -181,6 +183,12 @@ export class ChatsMenu extends Block {
     }
 
     render() {
+        this.children.userSettings = new ChatsSettingsButton({
+            events: {
+                click: showEditProfileModal
+            }
+        })
+
         users.forEach((user) => {
             user.events = { click: testFunc }
             this.children[user.id] = new ChatsUser(user);

@@ -12,4 +12,4 @@ export default `
         {{{button}}}
         <a class="form-link" href="{{linkHref}}">{{link}}</a>
     </form>
-`
+`;

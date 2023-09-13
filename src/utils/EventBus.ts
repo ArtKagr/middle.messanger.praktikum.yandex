@@ -1,7 +1,8 @@
-class EventBus {
-    private readonly listeners: Record<string, Callback[]> = {};
+import { Callback } from '../typings';
 
-    on(event: string, callback: (...args: any) => void) {
+export class EventBus {
+    private listeners: Record<string, Callback[]> = {};
+    on(event: string, callback: Callback) {
         if (!this.listeners[event]) {
             this.listeners[event] = [];
         }
@@ -17,15 +18,11 @@ class EventBus {
         this.listeners[event] = this.listeners[event].filter(listener => listener !== callback);
     }
 
-    emit(event: string, ...args: any) {
+    emit(event: string, ...args: unknown[]) {
         if (!this.listeners[event]) {
             throw new Error(`Нет события: ${event}`);
         }
 
         this.listeners[event].forEach(listener => listener(args))
     }
-}
-
-export {
-    EventBus
 }

@@ -1,5 +1,6 @@
 import Block from '../../utils/Block';
 import template from './error.tmpl';
+import { ErrorPageProps } from '../../typings';
 
 const notFoundPage: ErrorPageProps = {
     title: '404',
@@ -21,7 +22,7 @@ class ErrorPage extends Block {
     }
 
     init () {
-        this.getContent()?.setAttribute('class', 'layout -flex')
+        this.getContent()?.setAttribute('class', 'layout flex')
     }
 
     render() {

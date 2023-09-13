@@ -15,7 +15,9 @@
     "noImplicitReturns": true,
     "skipLibCheck": true,
     "sourceMap": true,
-    "strictNullChecks": true
+    "strictNullChecks": true,
+    "noImplicitAny": true,
+    "strictPropertyInitialization": false
   },
   "include": ["src"]
 }

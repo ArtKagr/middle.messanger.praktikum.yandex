@@ -2,7 +2,8 @@ import Block from '../../utils/Block';
 import { Button } from '../button';
 import { Input } from '../input';
 import template from './form.tmpl';
-import { focusFormInput, blurFormInput, submitForm } from '../../utils/Validation'
+import { focusFormInput, blurFormInput, submitForm } from '../../utils/Validation';
+import { FormProps, FormInput, ButtonProps } from '../../typings';
 
 export const authForm: FormProps = {
     action: '/chats',
@@ -114,16 +115,18 @@ class Form extends Block {
     }
 
     init () {
-        this.getContent()?.setAttribute('class', 'layout -flex')
+        this.getContent()?.setAttribute('class', 'layout flex')
     }
 
     render() {
-        this.props.inputs.forEach((input: FormInput) => {
+        const inputs: FormInput[] = this.props.inputs as FormInput[];
+
+        inputs.forEach((input: FormInput) => {
             input.events = { focusin: focusFormInput, focusout: blurFormInput }
             this.children[input.name] = new Input(input);
         })
 
-        this.children.button = new Button(this.props.button);
+        this.children.button = new Button(this.props.button as ButtonProps);
 
         return this.compile(template, this.props);
     }

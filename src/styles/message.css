@@ -1,5 +1,4 @@
 .message {
-
     &-header {
         display: flex;
         align-items: center;
@@ -49,7 +48,7 @@
             input {
                 width: 100%;
                 border: none;
-                background-color: var(--very_gloomy);
+                background-color: var(--very-gloomy);
                 font-size: 14px;
                 color: var(--grey);
 
@@ -75,7 +74,7 @@
             padding: 0 60px 8px;
             display: none;
 
-            &.-visible {
+            &.visible {
                 display: inline;
             }
         }

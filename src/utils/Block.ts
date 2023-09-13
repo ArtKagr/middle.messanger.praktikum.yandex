@@ -1,6 +1,7 @@
 import { EventBus } from "./EventBus";
 import { nanoid } from 'nanoid';
 import Handlebars from 'handlebars';
+import { Callback, ObjType } from '../typings';
 
 export default class Block {
     static EVENTS = {
@@ -14,7 +15,6 @@ export default class Block {
     protected props: ObjType;
     public children: ObjType;
     private eventBus: () => EventBus;
-    // @ts-ignore
     private _element: HTMLElement;
     private readonly _meta: { tagName: string, props: ObjType };
 
@@ -77,13 +77,16 @@ export default class Block {
         const { events = {} } = this.props as { events: ObjType };
 
         Object.keys(events).forEach(eventName => {
-            this._element!.addEventListener(eventName, events[eventName]);
+            const event = events[eventName] as Callback;
+            this._element!.addEventListener(eventName, event);
         });
     }
 
     private _registerEvents(eventBus: EventBus) {
         eventBus.on(Block.EVENTS.INIT, this._init.bind(this));
         eventBus.on(Block.EVENTS.FLOW_CDM, this._componentDidMount.bind(this));
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-ignore
         eventBus.on(Block.EVENTS.FLOW_CDU, this._componentDidUpdate.bind(this));
         eventBus.on(Block.EVENTS.FLOW_RENDER, this._render.bind(this));
     }
@@ -144,7 +147,7 @@ export default class Block {
     protected compile(template: string, context: ObjType) {
         const contextAndStubs = { ...context };
 
-        Object.entries(this.children).forEach(([name, element]) => {
+        Object.entries(this.children as Record<string, Block>).forEach(([name, element]) => {
             if (Array.isArray(element)) {
                 contextAndStubs[name] = element.map(item => `<div data-id="${item.id}"></div>`)
             } else {
@@ -153,19 +156,20 @@ export default class Block {
         })
 
         const temp = document.createElement('template');
+        //
 
 
         temp.innerHTML = Handlebars.compile(template)(contextAndStubs);
 
 
-        Object.entries(this.children).forEach(([_, component]) => {
+        Object.entries(this.children as Record<string, Block>).forEach(([_, component]) => {
             const stub = temp.content.querySelector(`[data-id="${component.id}"]`)
 
             if(!stub) {
                 return;
             }
 
-            component.getContent()?.append(...Array.from(stub.childNodes));
+            component.getContent().append(...Array.from(stub.childNodes));
             stub.replaceWith(component.getContent()!)
         });
 
@@ -193,7 +197,7 @@ export default class Block {
         });
     }
 
-    _createDocumentElement(tagName: any) {
+    _createDocumentElement(tagName: string) {
         return document.createElement(tagName);
     }
 }
