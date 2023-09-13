@@ -1,7 +1,7 @@
 import { EventBus } from "./EventBus";
 import { nanoid } from 'nanoid';
 import Handlebars from 'handlebars';
-import { Callback, ObjType } from '../typings';
+import { ObjType } from '../typings';
 
 export default class Block {
     static EVENTS = {
@@ -165,7 +165,9 @@ export default class Block {
                 return;
             }
 
-            component.getContent()?.append(...Array.from(stub.childNodes));
+            const comp = component.getContent() as HTMLElement;
+
+            comp?.append(...Array.from(stub.childNodes));
             stub.replaceWith(component.getContent()!)
         });
 
