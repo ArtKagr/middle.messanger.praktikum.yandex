@@ -63,8 +63,6 @@ function checkFormInput (input: HTMLInputElement): boolean {
     const rule: unknown | RegExp = rules[input.name as string]
     let isError: boolean = false
 
-    console.warn('rule', rule)
-
     if (rule instanceof RegExp)  {
         isError = !rule.test(input.value)
 
