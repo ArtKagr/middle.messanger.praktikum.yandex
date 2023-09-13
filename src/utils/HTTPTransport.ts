@@ -55,7 +55,7 @@ class HTTPTransport {
                 req.send();
             }
         });
-    };
+    }
 
     get (url: string, options: Options = {}) {
         return this.request(
@@ -63,7 +63,7 @@ class HTTPTransport {
             { ...options, method: methods.get },
             options.timeout
         );
-    };
+    }
 
     post (url: string, options: Options = {}) {
         return this.request(
@@ -71,7 +71,7 @@ class HTTPTransport {
             { ...options, method: methods.post },
             options.timeout
         )
-    };
+    }
 
     put (url: string, options: Options = {}) {
         return this.request(
@@ -79,7 +79,7 @@ class HTTPTransport {
             { ...options, method: methods.put },
             options.timeout
         )
-    };
+    }
 
     delete (url: string, options: Options = {}) {
         return this.request(
@@ -87,7 +87,7 @@ class HTTPTransport {
             { ...options, method: methods.delete },
             options.timeout
         )
-    };
+    }
 }
 
 function fetchWithRetry (url: string, options: Options = {}): Promise<XMLHttpRequest | Response> {

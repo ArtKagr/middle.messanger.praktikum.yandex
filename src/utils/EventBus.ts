@@ -2,7 +2,7 @@ import { Callback } from '../typings';
 
 export class EventBus {
     private listeners: Record<string, Callback[]> = {};
-    on(event: string, callback: (...args: any) => void) {
+    on(event: string, callback: (...args: never[]) => void) {
         if (!this.listeners[event]) {
             this.listeners[event] = [];
         }

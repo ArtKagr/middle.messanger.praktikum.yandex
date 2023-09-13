@@ -12,7 +12,7 @@ import {
 } from '../../../utils/Validation';
 import { FormInput, FormEditProfileProps } from '../../../typings';
 
-let items: FormInput[] = [
+const items: FormInput[] = [
     {
         value: null,
         placeholder: 'Почта',

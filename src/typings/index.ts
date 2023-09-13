@@ -1,10 +1,9 @@
-type ObjType = { [key: string]: any }
-
+type ObjType = { [key: string]: any };
 type Callback = (event: any) => void;
-
 type FuncEvent = { [key: string]: (...args: never[]) => void };
+type Chats = Object;
 
-interface ButtonProps {
+type ButtonProps = {
     title: string,
     disabled?: boolean;
     formButton: boolean;
@@ -63,8 +62,6 @@ type FormEditProfileProps = {
     title: string;
     className: string;
 }
-
-type Chats = {}
 
 type ErrorPageProps = {
     title: string;
