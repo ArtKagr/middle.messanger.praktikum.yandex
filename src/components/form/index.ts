@@ -2,7 +2,8 @@ import Block from '../../utils/Block';
 import { Button } from '../button';
 import { Input } from '../input';
 import template from './form.tmpl';
-import { focusFormInput, blurFormInput, submitForm } from '../../utils/Validation'
+import { focusFormInput, blurFormInput, submitForm } from '../../utils/Validation';
+import { FormProps, FormInput } from '../../typings';
 
 export const authForm: FormProps = {
     action: '/chats',

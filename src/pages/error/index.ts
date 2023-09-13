@@ -1,5 +1,6 @@
 import Block from '../../utils/Block';
 import template from './error.tmpl';
+import { ErrorPageProps } from '../../typings';
 
 const notFoundPage: ErrorPageProps = {
     title: '404',

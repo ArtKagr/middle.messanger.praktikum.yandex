@@ -3,6 +3,7 @@ import template from './chatsMenu.tmpl';
 import { ChatsUser } from '../user';
 import { testFunc, showEditProfileModal } from '../../../utils/Validation';
 import { ChatsSettingsButton } from '../settingsButton';
+import { ChatsMenuProps, UserProps } from '../../../typings';
 
 export const users: UserProps[] = [
     {

@@ -1,5 +1,6 @@
 import Block from '../../../../utils/Block';
 import template from './closeButton.tmpl';
+import { EventButtonProps } from '../../../../typings';
 
 export class EditProfileCloseButton extends Block {
     constructor(props: EventButtonProps) {

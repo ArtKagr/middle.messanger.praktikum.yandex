@@ -3,6 +3,7 @@ import { ChatMessageField } from '../../components/chats/field'
 import { FormEditProfile } from '../../components/form/editProfile';
 import Block from '../../utils/Block';
 import template from './chats.tmpl';
+import { Chats } from '../../typings';
 
 export class ChatsPage extends Block {
     constructor(props: Chats) {

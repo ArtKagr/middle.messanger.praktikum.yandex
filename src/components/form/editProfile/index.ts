@@ -10,6 +10,7 @@ import {
     saveProfileData,
     hideEditProfileModal
 } from '../../../utils/Validation';
+import { FormInput, FormEditProfileProps } from '../../../typings';
 
 let items: FormInput[] = [
     {

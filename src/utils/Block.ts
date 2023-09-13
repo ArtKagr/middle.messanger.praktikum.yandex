@@ -1,6 +1,7 @@
 import { EventBus } from "./EventBus";
 import { nanoid } from 'nanoid';
 import Handlebars from 'handlebars';
+import { ObjType } from '../typings';
 
 export default class Block {
     static EVENTS = {

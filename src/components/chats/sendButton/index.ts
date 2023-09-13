@@ -1,5 +1,6 @@
 import Block from '../../../utils/Block';
 import template from './sendButton.tmpl';
+import { EventButtonProps } from '../../../typings';
 
 export class ChatsSendButton extends Block {
     constructor(props: EventButtonProps) {

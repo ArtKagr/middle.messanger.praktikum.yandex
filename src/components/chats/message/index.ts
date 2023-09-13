@@ -1,5 +1,6 @@
 import Block from '../../../utils/Block';
 import template from './message.tmpl';
+import { FormInput } from '../../../typings';
 
 export class ChatsMessage extends Block {
     constructor(props: FormInput) {

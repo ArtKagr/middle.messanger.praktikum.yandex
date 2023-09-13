@@ -1,5 +1,6 @@
 import Block from '../../../../utils/Block';
 import template from './editProfileInput.tmpl';
+import { FormInput } from '../../../../typings';
 
 export class FormEditProfileInput extends Block {
     constructor(props: FormInput) {

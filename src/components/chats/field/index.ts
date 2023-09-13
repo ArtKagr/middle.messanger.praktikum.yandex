@@ -3,6 +3,7 @@ import template from './chatsField.tmpl';
 import { enterMessage, focusMessage } from '../../../utils/Validation';
 import { ChatsMessage } from '../message';
 import { ChatsSendButton } from '../sendButton';
+import { FormInput, EventButtonProps, ChatsFieldProps } from '../../../typings';
 
 
 const inputMessage: FormInput = {

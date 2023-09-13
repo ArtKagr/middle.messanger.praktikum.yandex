@@ -1,5 +1,6 @@
 import Block from '../../utils/Block';
 import template from './input.tmpl';
+import { FormInput } from '../../typings';
 
 export class Input extends Block {
     constructor(props: FormInput) {

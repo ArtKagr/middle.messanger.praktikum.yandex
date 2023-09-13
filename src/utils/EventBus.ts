@@ -1,4 +1,6 @@
-class EventBus {
+import { Callback } from '../typings';
+
+export class EventBus {
     private listeners: Record<string, Callback[]> = {};
     on(event: string, callback: (...args: any) => void) {
         if (!this.listeners[event]) {
@@ -23,8 +25,4 @@ class EventBus {
 
         this.listeners[event].forEach(listener => listener(args))
     }
-}
-
-export {
-    EventBus
 }
