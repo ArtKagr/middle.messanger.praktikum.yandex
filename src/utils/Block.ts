@@ -158,16 +158,14 @@ export default class Block {
         temp.innerHTML = Handlebars.compile(template)(contextAndStubs);
 
 
-        Object.entries(this.children as Record<string, ObjType>).forEach(([_, component]) => {
+        Object.entries(this.children as Record<string, Block>).forEach(([_, component]) => {
             const stub = temp.content.querySelector(`[data-id="${component.id}"]`)
 
             if(!stub) {
                 return;
             }
 
-            const comp = component as Block
-
-            comp.getContent().append(...Array.from(stub.childNodes));
+            component.getContent().append(...Array.from(stub.childNodes));
             stub.replaceWith(component.getContent()!)
         });
 
