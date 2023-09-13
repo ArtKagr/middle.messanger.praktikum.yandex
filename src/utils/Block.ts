@@ -153,6 +153,7 @@ export default class Block {
         })
 
         const temp = document.createElement('template');
+        //
 
 
         temp.innerHTML = Handlebars.compile(template)(contextAndStubs);
