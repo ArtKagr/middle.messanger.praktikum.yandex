@@ -1,6 +1,5 @@
 type ObjType = { [key: string]: unknown };
-type Callback = (...args: unknown[]) => void;
-type EventBusGuard = (oldProps: ObjType, newProps: ObjType) => void;
+type Callback = (...args: (unknown | ObjType)[]) => void;
 type FuncEvent = { [key: string]: (...args: never[]) => void };
 
 type ButtonProps = {
@@ -86,7 +85,6 @@ export {
     FormInput,
     FormEditProfileProps,
     ErrorPageProps,
-    EventButtonProps,
-    EventBusGuard
+    EventButtonProps
 }
 
