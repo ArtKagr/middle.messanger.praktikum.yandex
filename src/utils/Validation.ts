@@ -60,7 +60,7 @@ function enterMessage (): void {
 }
 
 function checkFormInput (input: HTMLInputElement): boolean {
-    const rule = !rules[input.name as string] as RegExp
+    const rule = !rules[input.name as string] as unknown
     const isError = rule.test(input.value)
 
     if (isError) {
@@ -71,7 +71,7 @@ function checkFormInput (input: HTMLInputElement): boolean {
 }
 
 function checkEditProfileInput (input: HTMLInputElement) {
-    const rule = !rules[input.name] as RegExp
+    const rule = !rules[input.name] as unknown
     const isError = rule.test(input.value)
 
     if (isError) {
