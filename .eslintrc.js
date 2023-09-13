@@ -4,8 +4,8 @@ module.exports = {
     parser: '@typescript-eslint/parser',
     plugins: ['@typescript-eslint'],
     rules: {
+        '@typescript-eslint/no-var-requires': 0,
         'no-unused-vars': 0,
-        'no-var-requires': 0,
         'max-len': [1, 10000],
         'max-params': [2, 3]
     },
