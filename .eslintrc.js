@@ -13,12 +13,5 @@ module.exports = {
         node: true,
         es6: true
     },
-    "@typescript-eslint/no-this-alias": [
-        'error',
-        {
-            allowDestructuring: true, // Allow `const { props, state } = this`; false by default
-            allowedNames: ["self"] // Allow `const self = this`; `[]` by default
-        }
-    ],
     root: true,
 };
