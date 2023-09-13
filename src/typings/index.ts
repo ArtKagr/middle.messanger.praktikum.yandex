@@ -1,5 +1,5 @@
 type ObjType = { [key: string]: unknown };
-type Callback = (event: unknown) => void;
+type Callback = (...args: unknown[]) => void;
 type FuncEvent = { [key: string]: (...args: never[]) => void };
 
 type ButtonProps = {
