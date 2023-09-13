@@ -1,8 +1,8 @@
-import { Callback } from '../typings';
+import { Callback, EventBusGuard } from '../typings';
 
 export class EventBus {
     private listeners: Record<string, Callback[]> = {};
-    on(event: string, callback: Callback) {
+    on(event: string, callback: Callback | EventBusGuard) {
         if (!this.listeners[event]) {
             this.listeners[event] = [];
         }

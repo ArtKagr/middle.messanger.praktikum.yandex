@@ -1,7 +1,7 @@
 import { EventBus } from "./EventBus";
 import { nanoid } from 'nanoid';
 import Handlebars from 'handlebars';
-import { Callback, ObjType } from '../typings';
+import { Callback, ObjType, EventBusGuard } from '../typings';
 
 export default class Block {
     static EVENTS = {
@@ -83,9 +83,11 @@ export default class Block {
     }
 
     private _registerEvents(eventBus: EventBus) {
+        const flowCduEvents = this._componentDidUpdate.bind(this) as EventBusGuard;
+
         eventBus.on(Block.EVENTS.INIT, this._init.bind(this));
         eventBus.on(Block.EVENTS.FLOW_CDM, this._componentDidMount.bind(this));
-        eventBus.on(Block.EVENTS.FLOW_CDU, this._componentDidUpdate.bind(this));
+        eventBus.on(Block.EVENTS.FLOW_CDU, flowCduEvents);
         eventBus.on(Block.EVENTS.FLOW_RENDER, this._render.bind(this));
     }
 
