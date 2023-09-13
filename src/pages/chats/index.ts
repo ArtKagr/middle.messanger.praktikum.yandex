@@ -3,11 +3,11 @@ import { ChatMessageField } from '../../components/chats/field'
 import { FormEditProfile } from '../../components/form/editProfile';
 import Block from '../../utils/Block';
 import template from './chats.tmpl';
-import { Chats } from '../../typings';
+import { ObjType } from '../../typings';
 
 export class ChatsPage extends Block {
-    constructor(props: Chats) {
-        super('div', props as {});
+    constructor(props: ObjType) {
+        super('div', props);
     }
 
     init () {

@@ -1,7 +1,6 @@
 type ObjType = { [key: string]: unknown };
 type Callback = (event: unknown) => void;
 type FuncEvent = { [key: string]: (...args: never[]) => void };
-type Chats = unknown;
 
 type ButtonProps = {
     title: string,
@@ -85,7 +84,6 @@ export {
     FormProps,
     FormInput,
     FormEditProfileProps,
-    Chats,
     ErrorPageProps,
     EventButtonProps
 }
