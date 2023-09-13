@@ -1,7 +1,7 @@
 import { EventBus } from "./EventBus";
 import { nanoid } from 'nanoid';
 import Handlebars from 'handlebars';
-import { ObjType } from '../typings';
+import { Callback, ObjType } from '../typings';
 
 export default class Block {
     static EVENTS = {
@@ -144,7 +144,7 @@ export default class Block {
     protected compile(template: string, context: ObjType) {
         const contextAndStubs = { ...context };
 
-        Object.entries(this.children).forEach(([name, element]) => {
+        Object.entries(this.children as Record<string, ObjType>).forEach(([name, element]) => {
             if (Array.isArray(element)) {
                 contextAndStubs[name] = element.map(item => `<div data-id="${item.id}"></div>`)
             } else {
