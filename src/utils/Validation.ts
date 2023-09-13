@@ -60,11 +60,13 @@ function enterMessage (): void {
 }
 
 function checkFormInput (input: HTMLInputElement): boolean {
-    const rule: unknown | RegExp = !rules[input.name as string]
+    const rule: unknown | RegExp = rules[input.name as string]
     let isError: boolean = false
 
+    console.warn('rule', rule)
+
     if (rule instanceof RegExp)  {
-        isError = rule.test(input.value)
+        isError = !rule.test(input.value)
 
         if (isError) {
             input.nextElementSibling?.setAttribute('class', 'error-text visible')
@@ -75,11 +77,11 @@ function checkFormInput (input: HTMLInputElement): boolean {
 }
 
 function checkEditProfileInput (input: HTMLInputElement) {
-    const rule: unknown | RegExp = !rules[input.name as string]
+    const rule: unknown | RegExp = rules[input.name as string]
     let isError: boolean = false
 
     if (rule instanceof RegExp)  {
-        isError = rule.test(input.value)
+        isError = !rule.test(input.value)
 
         if (isError) {
             const parent = input.parentElement
