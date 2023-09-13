@@ -32,12 +32,12 @@ function blurEditProfileInput (event: InputEvent): void {
 }
 
 function showEditProfileModal (): void {
-    const modal: HTMLDivElement = document.querySelector('.layout-modal')
+    const modal: HTMLDivElement | null = document.querySelector('.layout-modal')
     modal?.setAttribute('class', 'layout-modal visible')
 }
 
 function hideEditProfileModal (): void {
-    const modal: HTMLDivElement = document.querySelector('.layout-modal')
+    const modal: HTMLDivElement | null = document.querySelector('.layout-modal')
     modal?.setAttribute('class', 'layout-modal')
 }
 
@@ -60,7 +60,7 @@ function enterMessage (): void {
 }
 
 function checkFormInput (input: HTMLInputElement): boolean {
-    const isError = !rules[input.name].test(input.value)
+    const isError = !rules[input.name as RegExp].test(input.value)
 
     if (isError) {
         input.nextElementSibling?.setAttribute('class', 'error-text visible')
@@ -70,7 +70,7 @@ function checkFormInput (input: HTMLInputElement): boolean {
 }
 
 function checkEditProfileInput (input: HTMLInputElement) {
-    const isError = !rules[input.name].test(input.value)
+    const isError = !rules[input.name as RegExp].test(input.value)
 
     if (isError) {
         const parent = input.parentElement
