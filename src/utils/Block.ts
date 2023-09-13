@@ -158,7 +158,7 @@ export default class Block {
         temp.innerHTML = Handlebars.compile(template)(contextAndStubs);
 
 
-        Object.entries(this.children).forEach(([_, component]) => {
+        Object.entries(this.children as Record<string, ObjType>).forEach(([_, component]) => {
             const stub = temp.content.querySelector(`[data-id="${component.id}"]`)
 
             if(!stub) {
