@@ -119,7 +119,9 @@ class Form extends Block {
     }
 
     render() {
-        this.props.inputs.forEach((input: FormInput) => {
+        const inputs: FormInput[] = this.props.inputs as FormInput[];
+
+        inputs.forEach((input: FormInput) => {
             input.events = { focusin: focusFormInput, focusout: blurFormInput }
             this.children[input.name] = new Input(input);
         })
