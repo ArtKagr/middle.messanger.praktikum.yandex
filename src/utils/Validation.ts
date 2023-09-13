@@ -60,7 +60,8 @@ function enterMessage (): void {
 }
 
 function checkFormInput (input: HTMLInputElement): boolean {
-    const isError = !rules[input.name as RegExp].test(input.value)
+    const rule = !rules[input.name as string] as RegExp
+    const isError = rule.test(input.value)
 
     if (isError) {
         input.nextElementSibling?.setAttribute('class', 'error-text visible')
@@ -70,7 +71,8 @@ function checkFormInput (input: HTMLInputElement): boolean {
 }
 
 function checkEditProfileInput (input: HTMLInputElement) {
-    const isError = !rules[input.name as RegExp].test(input.value)
+    const rule = !rules[input.name as string] as RegExp
+    const isError = rule.test(input.value)
 
     if (isError) {
         const parent = input.parentElement
