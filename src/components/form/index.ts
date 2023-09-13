@@ -3,7 +3,7 @@ import { Button } from '../button';
 import { Input } from '../input';
 import template from './form.tmpl';
 import { focusFormInput, blurFormInput, submitForm } from '../../utils/Validation';
-import { FormProps, FormInput } from '../../typings';
+import { FormProps, FormInput, ButtonProps } from '../../typings';
 
 export const authForm: FormProps = {
     action: '/chats',
@@ -124,7 +124,7 @@ class Form extends Block {
             this.children[input.name] = new Input(input);
         })
 
-        this.children.button = new Button(this.props.button);
+        this.children.button = new Button(this.props.button as ButtonProps);
 
         return this.compile(template, this.props);
     }

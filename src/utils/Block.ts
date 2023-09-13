@@ -15,7 +15,7 @@ export default class Block {
     protected props: ObjType;
     public children: ObjType;
     private eventBus: () => EventBus;
-    private _element: HTMLElement;
+    private readonly _element: HTMLElement;
     private readonly _meta: { tagName: string, props: ObjType };
 
     constructor(tagName: string = "div", propsWithChildren: ObjType = {}) {

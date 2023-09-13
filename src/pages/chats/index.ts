@@ -7,7 +7,7 @@ import { Chats } from '../../typings';
 
 export class ChatsPage extends Block {
     constructor(props: Chats) {
-        super('div', props);
+        super('div', props as {});
     }
 
     init () {
