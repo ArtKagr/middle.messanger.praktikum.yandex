@@ -193,7 +193,7 @@ export default class Block {
         });
     }
 
-    _createDocumentElement(tagName: any) {
+    _createDocumentElement(tagName: string) {
         return document.createElement(tagName);
     }
 }
