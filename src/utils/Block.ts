@@ -165,9 +165,9 @@ export default class Block {
                 return;
             }
 
-            const comp = component.getContent() as HTMLElement;
+            const comp = component as Block
 
-            comp?.append(...Array.from(stub.childNodes));
+            comp.getContent().append(...Array.from(stub.childNodes));
             stub.replaceWith(component.getContent()!)
         });
 
