@@ -1,6 +1,7 @@
 type ObjType = { [key: string]: unknown };
-type Callback = (...args: (unknown | ObjType)[]) => void;
+type Callback = (...args: unknown[]) => void;
 type FuncEvent = { [key: string]: (...args: never[]) => void };
+type ObjTypes = { [key: string]: (...args: ObjType[]) => void };
 
 type ButtonProps = {
     title: string,
@@ -75,6 +76,7 @@ type EventButtonProps = {
 
 export {
     ObjType,
+    ObjTypes,
     Callback,
     FuncEvent,
     ButtonProps,
