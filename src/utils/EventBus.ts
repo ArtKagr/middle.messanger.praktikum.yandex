@@ -1,4 +1,4 @@
-import { Callback, ObjTypes } from '../typings';
+import { Callback } from '../typings';
 
 export class EventBus {
     private listeners: Record<string, Callback[]> = {};
