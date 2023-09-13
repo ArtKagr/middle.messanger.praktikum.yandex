@@ -60,23 +60,31 @@ function enterMessage (): void {
 }
 
 function checkFormInput (input: HTMLInputElement): boolean {
-    const rule = !rules[input.name as string] as unknown
-    const isError = rule.test(input.value)
+    const rule = !rules[input.name as string] as RegExp | undefined
+    let isError: boolean = false
 
-    if (isError) {
-        input.nextElementSibling?.setAttribute('class', 'error-text visible')
+    if (rule)  {
+        isError = rule.test(input.value)
+
+        if (isError) {
+            input.nextElementSibling?.setAttribute('class', 'error-text visible')
+        }
     }
 
     return isError
 }
 
 function checkEditProfileInput (input: HTMLInputElement) {
-    const rule = !rules[input.name] as unknown
-    const isError = rule.test(input.value)
+    const rule = !rules[input.name as string] as RegExp | undefined
+    let isError: boolean = false
 
-    if (isError) {
-        const parent = input.parentElement
-        parent?.nextElementSibling?.setAttribute('class', 'modal-edit_profile-block-data-error visible')
+    if (rule)  {
+        isError = rule.test(input.value)
+
+        if (isError) {
+            const parent = input.parentElement
+            parent?.nextElementSibling?.setAttribute('class', 'modal-edit_profile-block-data-error visible')
+        }
     }
 
     return isError
