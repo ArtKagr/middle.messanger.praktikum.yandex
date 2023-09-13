@@ -1,7 +1,7 @@
 import { EventBus } from "./EventBus";
 import { nanoid } from 'nanoid';
 import Handlebars from 'handlebars';
-import { ObjType } from '../typings';
+import { Callback, ObjType } from '../typings';
 
 export default class Block {
     static EVENTS = {
@@ -77,7 +77,8 @@ export default class Block {
         const { events = {} } = this.props as { events: ObjType };
 
         Object.keys(events).forEach(eventName => {
-            this._element!.addEventListener(eventName, events[eventName]);
+            const event = events[eventName] as Callback;
+            this._element!.addEventListener(eventName, event);
         });
     }
 
