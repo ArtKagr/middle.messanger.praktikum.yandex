@@ -8,6 +8,7 @@ module.exports = {
         '@typescript-eslint/no-unused-vars': 0,
         '@typescript-eslint/no-this-alias': 0,
         '@typescript-eslint/ban-ts-comment': 0,
+        'no-useless-escape': 0,
         'max-len': [1, 10000],
         'max-params': [2, 3]
     },
