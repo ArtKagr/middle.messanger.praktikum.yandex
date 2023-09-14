@@ -5,6 +5,8 @@ enum methods {
     delete = 'DELETE'
 }
 
+type HTTPMethod = (url: string, options?: Options) => Promise<unknown>;
+
 type Options = {
     method?: methods;
     data?: Record<string, string> | null | undefined;
@@ -57,35 +59,35 @@ class HTTPTransport {
         });
     }
 
-    get (url: string, options: Options = {}) {
+    get: HTTPMethod = (url, options) => {
         return this.request(
-            `${url}${this._getQueryString(options.data || {})}`,
+            `${url}${this._getQueryString(options?.data || {})}`,
             { ...options, method: methods.get },
-            options.timeout
+            options?.timeout
         );
     }
 
-    post (url: string, options: Options = {}) {
+    post: HTTPMethod = (url, options) => {
         return this.request(
             url,
             { ...options, method: methods.post },
-            options.timeout
+            options?.timeout
         )
     }
 
-    put (url: string, options: Options = {}) {
+    put: HTTPMethod = (url, options) => {
         return this.request(
             url,
             { ...options, method: methods.put },
-            options.timeout
+            options?.timeout
         )
     }
 
-    delete (url: string, options: Options = {}) {
+    delete: HTTPMethod = (url, options) => {
         return this.request(
-            `${url}${this._getQueryString(options.data || {})}`,
+            `${url}${this._getQueryString(options?.data || {})}`,
             { ...options, method: methods.delete },
-            options.timeout
+            options?.timeout
         )
     }
 }
