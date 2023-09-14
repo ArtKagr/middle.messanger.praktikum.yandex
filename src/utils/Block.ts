@@ -3,7 +3,7 @@ import { nanoid } from 'nanoid';
 import Handlebars from 'handlebars';
 import { Callback, ObjType } from '../typings';
 
-export default class Block {
+export default abstract class Block {
     static EVENTS = {
         INIT: "init",
         FLOW_CDM: "flow:component-did-mount",
@@ -18,7 +18,7 @@ export default class Block {
     private _element: HTMLElement;
     private readonly _meta: { tagName: string, props: ObjType };
 
-    constructor(tagName: string = "div", propsWithChildren: ObjType = {}) {
+    protected constructor(tagName: string = "div", propsWithChildren: ObjType = {}) {
         const eventBus = new EventBus();
 
         const { props, children } = this._getChildrenAndProps(propsWithChildren);
@@ -82,6 +82,17 @@ export default class Block {
         });
     }
 
+    private _removeEvents () {
+        const { events = {} } = this.props;
+
+        Object.keys(events).forEach(eventName => {
+            const event = events[eventName] as Callback;
+            if (this._element) {
+                this._element.removeEventListener(eventName, event);
+            }
+        })
+    }
+
     private _registerEvents(eventBus: EventBus) {
         eventBus.on(Block.EVENTS.INIT, this._init.bind(this));
         eventBus.on(Block.EVENTS.FLOW_CDM, this._componentDidMount.bind(this));
@@ -131,11 +142,9 @@ export default class Block {
 
     private _render() {
         const block = this.render();
-
+        this._removeEvents();
         this._element!.innerHTML = '';
-
         this._element!.append(block);
-
         this._addEvents();
     }
 
