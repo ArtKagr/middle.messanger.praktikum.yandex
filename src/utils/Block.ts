@@ -199,9 +199,6 @@ export default abstract class Block {
                 target[prop] = value;
                 self.eventBus().emit(Block.EVENTS.FLOW_CDU, { oldTarget, target });
                 return true;
-            },
-            deleteProperty() {
-                throw new Error("Нет доступа");
             }
         });
     }
