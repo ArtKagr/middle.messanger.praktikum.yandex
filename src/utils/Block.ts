@@ -83,7 +83,7 @@ export default abstract class Block {
     }
 
     private _removeEvents () {
-        const { events = {} } = this.props;
+        const { events = {} } = this.props as { events: ObjType };
 
         Object.keys(events).forEach(eventName => {
             const event = events[eventName] as Callback;

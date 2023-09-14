@@ -82,7 +82,6 @@ type EventButtonProps = {
 
 export {
     ObjType,
-    ObjTypes,
     Callback,
     FuncEvent,
     ButtonProps,
