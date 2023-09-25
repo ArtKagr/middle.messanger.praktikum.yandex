@@ -1,7 +1,8 @@
 .form {
     display: flex;
     flex-direction: column;
-    margin: auto auto;
+    margin: auto;
+    padding: 40px 0;
 
     &-not_found {
         width: 215px;
@@ -9,12 +10,11 @@
     }
 
     &-title {
-
         &-auth {
             font-size: 34px;
             color: var(--main);
             text-align: center;
-            margin: 0 0 32px 0;
+            margin: 0 0 32px;
             line-height: 1;
         }
 
@@ -29,12 +29,11 @@
     }
 
     &-subtitle {
-
         &-main {
             font-size: 34px;
             text-align: center;
             color: var(--main);
-            margin: 30px 0 16px 0;
+            margin: 30px 0 16px;
         }
 
         &-secondary {
@@ -46,6 +45,25 @@
         }
     }
 
+    &-input_container {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 16px;
+
+        .error-text {
+            font-size: 12px;
+            color: var(--danger);
+            padding: 4px 12px 0;
+            width: 343px;
+            line-height: 16px;
+            display: none;
+
+            &.visible {
+                display: inline;
+            }
+        }
+    }
+
     &-input {
         width: 343px;
         padding: 16px 12px;
@@ -53,7 +71,6 @@
         border: none;
         background-color: var(--dark);
         font-size: 16px;
-        margin-bottom: 16px;
 
         &:focus-visible {
             outline: none;
@@ -75,6 +92,10 @@
         text-align: center;
         text-decoration: none;
         letter-spacing: 0.0125em;
+
+        &:disabled {
+            background-color: var(--light-grey);
+        }
     }
 
     &-link {

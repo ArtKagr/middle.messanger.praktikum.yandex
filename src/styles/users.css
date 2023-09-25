@@ -1,10 +1,9 @@
 .user {
-
     &-avatar {
         width: 44px;
         height: 44px;
         border-radius: 100px;
-        background-color: var(--light_grey);
+        background-color: var(--light-grey);
         margin-right: 8px;
     }
 
