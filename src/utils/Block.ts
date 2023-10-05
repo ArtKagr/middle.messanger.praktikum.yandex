@@ -3,7 +3,7 @@ import { nanoid } from 'nanoid';
 import Handlebars from 'handlebars';
 import { Callback, ObjType } from '../typings';
 
-export default abstract class Block {
+export default class Block {
     static EVENTS = {
         INIT: "init",
         FLOW_CDM: "flow:component-did-mount",
@@ -18,7 +18,7 @@ export default abstract class Block {
     private _element: HTMLElement;
     private readonly _meta: { tagName: string, props: ObjType };
 
-    protected constructor(tagName: string = "div", propsWithChildren: ObjType = {}) {
+    constructor(tagName: string = "div", propsWithChildren: ObjType = {}) {
         const eventBus = new EventBus();
 
         const { props, children } = this._getChildrenAndProps(propsWithChildren);
@@ -205,5 +205,13 @@ export default abstract class Block {
 
     _createDocumentElement(tagName: string) {
         return document.createElement(tagName);
+    }
+
+    show(): void {
+        this.getContent()!.style.display = 'flex';
+    }
+
+    hide(): void {
+        this.getContent()!.style.display = 'none';
     }
 }

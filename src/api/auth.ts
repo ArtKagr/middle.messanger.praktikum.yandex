@@ -1,22 +1,23 @@
 import { HTTPTransport } from '../utils/HTTPTransport';
+import { url, User} from "./type";
 
 const authApi= new HTTPTransport();
 
 export default class AuthApi {
-    async create(data: Record<string, string>) {
-        return authApi.post('/auth/signup', { data });
+    async create(data: User) {
+        return await authApi.post(`${url}/auth/signup`, { data });
     }
 
-    async login(data: Record<string, string>) {
-        return authApi.post('/auth/signin', { data });
+    async login(data: User) {
+        return await authApi.post(`${url}/auth/signin`, { data });
     }
 
-    async me() {
-        return authApi.get('/auth/user');
+    async getUser() {
+        return await authApi.get(`${url}/auth/user`);
     }
 
     async logout() {
-        return authApi.post('/auth/logout')
+        return await authApi.post(`${url}/auth/logout`)
     }
 }
 

@@ -1,4 +1,8 @@
-export type User = {
+const webSocketUrl: string = 'https://ya-praktikum.tech/WS/chats';
+
+const url: string = 'https://ya-praktikum.tech/api/v2';
+
+type User = {
     id: string;
     first_name: string;
     second_name: string;
@@ -10,3 +14,8 @@ export type User = {
     password: string;
 };
 
+export {
+  webSocketUrl,
+  url,
+  User
+};

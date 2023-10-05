@@ -4,6 +4,10 @@ type ObjType = {
     [key: string]: unknown
 };
 
+type Indexed<T = unknown> = {
+    [key in string]: T;
+}
+
 type FuncEvent = {
     [key: string]: (...args: never[]) => void
 };
@@ -82,6 +86,7 @@ type EventButtonProps = {
 
 export {
     ObjType,
+    Indexed,
     Callback,
     FuncEvent,
     ButtonProps,
