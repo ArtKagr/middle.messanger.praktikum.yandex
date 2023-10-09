@@ -1,5 +1,6 @@
 import { HTTPTransport } from '../utils/HTTPTransport';
-import { url, User} from "./type";
+import { url } from "../typings/constants";
+import { User } from "../typings";
 
 const authApi= new HTTPTransport();
 

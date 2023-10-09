@@ -84,6 +84,32 @@ type EventButtonProps = {
     events: FuncEvent;
 }
 
+type User = {
+    id: string;
+    first_name: string;
+    second_name: string;
+    display_name: string;
+    phone: string;
+    login: string;
+    avatar: string;
+    email: string;
+    password: string;
+};
+
+type ChatCreate = {
+    title: string,
+    chatId: string | number | ChatCreate
+}
+
+type ChatUsers = {
+    users: Array<string | number>,
+    chatId: number
+}
+
+type ResIndexed = {
+    [key: string]: unknown
+}
+
 export {
     ObjType,
     Indexed,
@@ -97,6 +123,10 @@ export {
     FormInput,
     FormEditProfileProps,
     ErrorPageProps,
-    EventButtonProps
+    EventButtonProps,
+    User,
+    ChatCreate,
+    ChatUsers,
+    ResIndexed
 }
 

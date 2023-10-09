@@ -1,15 +1,6 @@
 import { HTTPTransport } from "../utils/HTTPTransport";
-import { url } from "./type";
-
-type ChatCreate = {
-    title: string,
-    chatId: string | number | ChatCreate
-}
-
-type ChatUsers = {
-    users: Array<string | number>,
-    chatId: number
-}
+import { url } from "../typings/constants";
+import { ResIndexed, ChatCreate, ChatUsers } from "../typings";
 
 const chatApi = new HTTPTransport();
 
@@ -20,19 +11,24 @@ class ChatApi {
     }
 
     async getChatToken(data: number) {
-        return await chatApi.post(`${url}/chats/token/${data}`);
+        const { token } = (await chatApi.post(`${url}/chats/token/${data}`) as ResIndexed);
+        return token
     }
 
     async createChat(data: ChatCreate) {
-        return await chatApi.post(`${url}/chats`, { data });
+        return await chatApi.post(`${url}/chats`, { data } as ResIndexed);
     }
 
     async addUsers(data: ChatUsers) {
-        return await chatApi.put(`${url}/chats/users`, { data });
+        return await chatApi.put(`${url}/chats/users`, { data } as ResIndexed);
     }
 
     async deleteUsers(data: ChatUsers) {
-        return await chatApi.delete(`${url}/chats/users`, { data });
+        return await chatApi.delete(`${url}/chats/users`, { data } as ResIndexed);
+    }
+
+    async uploadAvatar(data: FormData) {
+        return await chatApi.put(`${url}/chats/avatar`, { data } as ResIndexed);
     }
 }
 

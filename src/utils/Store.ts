@@ -17,8 +17,9 @@ class Store extends EventBus {
 
 }
 
+const store = new Store;
+
 function connect(mapStateToProps: (state: Indexed) => Indexed) {
-    const store = new Store;
 
     return function getComponent(Component: typeof Block) {
         return class NewComponent extends Component {
@@ -109,6 +110,7 @@ function isEqual(lhs: Indexed, rhs: Indexed): boolean {
 }
 
 export {
+    store,
     connect
 }
 
